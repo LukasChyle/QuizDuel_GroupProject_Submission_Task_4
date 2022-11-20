@@ -24,7 +24,6 @@ public class Server implements Runnable {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
     }
 
     public static void main(String[] args) {
