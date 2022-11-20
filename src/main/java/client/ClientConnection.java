@@ -1,5 +1,7 @@
 package client;
 
+import data.Data;
+
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
@@ -49,7 +51,7 @@ public class ClientConnection implements Runnable {
 
             while (true) {
                 Data inData = (Data) in.readObject();
-                System.out.println("Data came to client"); // test
+                System.out.println("data.Data came to client"); // test
                 dataHandler.readData(inData);
             }
         } catch (IOException | ClassNotFoundException e) {

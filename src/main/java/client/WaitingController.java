@@ -20,6 +20,10 @@ public class WaitingController {
     }
 
     public void onCloseClick(ActionEvent event) {
-        System.exit(0); // Temporary
+
+        dataHandler.chosenCategory(null); // test to send data to server.
+
+
+       // System.exit(0); // Temporary
     }
 }

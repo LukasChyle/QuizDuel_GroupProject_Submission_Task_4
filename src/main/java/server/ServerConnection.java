@@ -1,5 +1,7 @@
 package server;
 
+import data.Data;
+
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
@@ -25,7 +27,7 @@ public class ServerConnection implements Runnable {
 
             while (true) {
                 Data inData = (Data) in.readObject();
-                System.out.println("Data came to server"); // test
+                System.out.println("data.Data came to server"); // test
                 game.protocol(inData);
             }
         } catch (IOException | ClassNotFoundException e) {

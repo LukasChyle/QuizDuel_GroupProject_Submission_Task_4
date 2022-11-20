@@ -1,5 +1,7 @@
 package server;
 
+import data.Data;
+
 public class Game {
 
     private ServerConnection p1, p2;
