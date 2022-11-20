@@ -13,7 +13,7 @@ public class ClientApplication extends Application {
     @Override
     public void start(Stage stage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(ClientApplication.class.getResource("avatarScene.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 350, 500);
+        Scene scene = new Scene(fxmlLoader.load());
         stage.initStyle(StageStyle.UNDECORATED);
         stage.setScene(scene);
         stage.show();
