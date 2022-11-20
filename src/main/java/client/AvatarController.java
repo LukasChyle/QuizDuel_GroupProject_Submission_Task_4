@@ -44,8 +44,8 @@ public class AvatarController {
 
         FXMLLoader loader = new FXMLLoader(getClass().getResource("profileScene.fxml"));
         Parent root = loader.load();
-        StartController startCon = loader.getController();
-        startCon.setAvatar(avatar);
+        ProfileController profile = loader.getController();
+        profile.setAvatar(avatar);
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         Scene scene = new Scene(root);
         stage.setScene(scene);
