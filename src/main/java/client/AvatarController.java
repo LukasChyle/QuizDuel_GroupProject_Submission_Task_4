@@ -42,7 +42,7 @@ public class AvatarController {
         else
             avatar = 1;
 
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("startScene.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("profileScene.fxml"));
         Parent root = loader.load();
         StartController startCon = loader.getController();
         startCon.setAvatar(avatar);
