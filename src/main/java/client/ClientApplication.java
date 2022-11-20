@@ -9,6 +9,7 @@ import javafx.stage.StageStyle;
 import java.io.IOException;
 
 public class ClientApplication extends Application {
+
     @Override
     public void start(Stage stage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(ClientApplication.class.getResource("avatarScene.fxml"));
@@ -16,6 +17,7 @@ public class ClientApplication extends Application {
         stage.initStyle(StageStyle.UNDECORATED);
         stage.setScene(scene);
         stage.show();
+        Movable.setMovable(scene, stage);
     }
 
     public static void main(String[] args) {

@@ -34,6 +34,7 @@ public class DataHandler {
         Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
+        Movable.setMovable(scene, stage);
          */
     }
 
