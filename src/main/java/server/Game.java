@@ -15,7 +15,6 @@ public class Game {
 
     protected void protocol(Data data) {
         System.out.println("Data came to server"); // test
-
         p1.sendData(data); // test
         p2.sendData(data); // test
     }
