@@ -14,6 +14,7 @@ public class ClientApplication extends Application {
     public void start(Stage stage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(ClientApplication.class.getResource("avatarScene.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
+        stage.setTitle("Quiz Duel");
         stage.initStyle(StageStyle.UNDECORATED);
         stage.setScene(scene);
         stage.show();
