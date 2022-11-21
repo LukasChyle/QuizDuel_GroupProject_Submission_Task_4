@@ -13,8 +13,8 @@ public class Server implements Runnable {
             while (true) {
                 Game game = new Game();
 
-                ServerConnection p1 = new ServerConnection(sSocket.accept(), game);
-                ServerConnection p2 = new ServerConnection(sSocket.accept(), game);
+                ServerConnection p1 = new ServerConnection(sSocket.accept(), game,1);
+                ServerConnection p2 = new ServerConnection(sSocket.accept(), game,2);
 
                 game.setPlayers(p1, p2);
 

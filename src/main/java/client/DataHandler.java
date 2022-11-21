@@ -17,6 +17,7 @@ public class DataHandler {
     private int ownAvatar, opponentAvatar;
     private String ownNickname, opponentNickname;
     private Node currentNode;
+    private int player;
 
     protected DataHandler(String nickname, int avatar, ClientConnection connection) {
         ownNickname = nickname;
@@ -32,13 +33,15 @@ public class DataHandler {
 
     protected void readData(Data data) throws IOException { // income data from server
         System.out.println("Data came to client"); // test
-
         switchToCategoryScene(new String[]{"Sport"}); // test
+        this.player = data.player;
+        System.out.println(player);
     }
 
     protected void setNode(Node node) {
         currentNode = node;
     } // node from current scene to change for a new one.
+
 
     // makes the client go to the category scene to pick a category.
     protected void switchToCategoryScene(String[] categories) throws IOException {
