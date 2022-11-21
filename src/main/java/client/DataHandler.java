@@ -13,6 +13,8 @@ public class DataHandler {
     private int ownAvatar, opponentAvatar;
     private String ownNickname, opponentNickname;
 
+    private int player;
+
     protected DataHandler(String nickname, int avatar, ClientConnection connection) {
         ownNickname = nickname;
         ownAvatar = avatar;
@@ -21,6 +23,8 @@ public class DataHandler {
 
     protected void readData(Data data) { // Read the data from server and decide what to do.
         System.out.println("data.Data came to client"); // test
+        this.player = data.getPlayer();
+        System.out.println(player);
 
     }
 

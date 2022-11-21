@@ -14,11 +14,13 @@ public class ServerConnection implements Runnable {
     private ObjectOutputStream out;
     private ObjectInputStream in;
     private int player;
+    Data data = new Data();
 
     protected ServerConnection(Socket socket, Game game,int player) {
         this.socket = socket;
         this.game = game;
         this.player = player;
+        this.data.setPlayer(player);
     }
 
     @Override
@@ -26,6 +28,8 @@ public class ServerConnection implements Runnable {
         try {
             out = new ObjectOutputStream(socket.getOutputStream());
             in = new ObjectInputStream(socket.getInputStream());
+
+            sendData(data);
 
             while (true) {
                 Data inData = (Data) in.readObject();
