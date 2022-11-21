@@ -20,6 +20,7 @@ public class DataHandler {
     }
 
     protected void readData(Data data) { // Read the data from server and decide what to do.
+        System.out.println("data.Data came to client"); // test
 
     }
 

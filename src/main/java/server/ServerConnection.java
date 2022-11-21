@@ -27,7 +27,6 @@ public class ServerConnection implements Runnable {
 
             while (true) {
                 Data inData = (Data) in.readObject();
-                System.out.println("data.Data came to server"); // test
                 game.protocol(inData);
             }
         } catch (IOException | ClassNotFoundException e) {

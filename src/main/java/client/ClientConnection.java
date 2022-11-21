@@ -51,7 +51,6 @@ public class ClientConnection implements Runnable {
 
             while (true) {
                 Data inData = (Data) in.readObject();
-                System.out.println("data.Data came to client"); // test
                 dataHandler.readData(inData);
             }
         } catch (IOException | ClassNotFoundException e) {
