@@ -11,9 +11,11 @@ public class CategoryHandler {
     public CategoryHandler() {
     }
 
-    public void getContries(){} // exempli kategori
+    public void getContries() {
+    } // exempli kategori
 
-    public void getAnimal(){} // exempli kategori
+    public void getAnimal() {
+    } // exempli kategori
 
     public List<String[]> getSport() throws IOException {
         Path path = Path.of("src", "main", "resources", "server", "Sport");
@@ -29,10 +31,6 @@ public class CategoryHandler {
             listOfQuestions.add(question);
         }
         return listOfQuestions;
-    }
-
-    public static void main(String[] args) {
-        new CategoryHandler();
     }
 }
 
