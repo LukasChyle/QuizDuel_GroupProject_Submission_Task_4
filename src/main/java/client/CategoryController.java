@@ -33,7 +33,6 @@ public class CategoryController implements Runnable {
             category3Button.setVisible(false);
         }
         new Thread(this).start();
-        dataHandler.setNode(category1Button);
     }
 
     @FXML

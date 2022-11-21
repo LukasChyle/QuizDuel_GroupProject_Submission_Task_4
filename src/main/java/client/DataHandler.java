@@ -48,23 +48,13 @@ public class DataHandler {
         System.out.println(player);
     }
 
+    private void setOpponentInfo(Data data) {
+        opponentAvatar = data.avatar;
+        opponentNickname = data.opponentNickname;
+    }
 
-
-    private void setWait(Data data) throws IOException {
-
-        String message = "test message"; // message if waiting for category pick or opponent to finnish round.
-
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("waitingScene.fxml"));
-        Parent root = loader.load();
-        WaitingController waiting = loader.getController();
-        waiting.setLayout(message, "Surrender", this);
-        Stage stage = (Stage) currentNode.getScene().getWindow();
-        Scene scene = new Scene(root);
-        Platform.runLater(() -> {
-            stage.setScene(scene);
-            stage.show();
-            Movable.setMovable(scene, stage);
-        });
+    private void setWait(Data data) {
+        // TODO: Create wait scene with specific message.
     }
 
     private void setScore(Data data) {
@@ -99,11 +89,7 @@ public class DataHandler {
 
     private void setPlayer(Data data) { // set if player 1 or 2
         this.player = data.player;
-    }
-
-    private void setOpponentInfo(Data data) {
-        opponentAvatar = data.avatar;
-        opponentNickname = data.opponentNickname;
+        System.out.println(player); // test
     }
 
     protected void setNode(Node node) {
