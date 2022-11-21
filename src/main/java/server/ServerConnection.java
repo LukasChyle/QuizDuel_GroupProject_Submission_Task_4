@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
+import data.Tasks;
 
 public class ServerConnection implements Runnable {
 
@@ -13,14 +14,12 @@ public class ServerConnection implements Runnable {
     private final Game game;
     private ObjectOutputStream out;
     private ObjectInputStream in;
-    private int player;
-    Data data = new Data();
+    private final int player;
 
     protected ServerConnection(Socket socket, Game game,int player) {
         this.socket = socket;
         this.game = game;
         this.player = player;
-        this.data.player = player;
     }
 
     @Override
@@ -29,6 +28,9 @@ public class ServerConnection implements Runnable {
             out = new ObjectOutputStream(socket.getOutputStream());
             in = new ObjectInputStream(socket.getInputStream());
 
+            Data data = new Data();
+            data.task = Tasks.SET_PLAYER;
+            data.player = player;
             sendData(data);
 
             while (true) {

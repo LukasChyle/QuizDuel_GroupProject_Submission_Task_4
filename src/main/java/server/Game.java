@@ -1,6 +1,7 @@
 package server;
 
 import data.Data;
+import data.Tasks;
 
 import java.util.ArrayList;
 
@@ -15,8 +16,28 @@ public class Game {
 
     protected void protocol(Data data) { // income data from Client
         System.out.println("Data came to server"); // test
+
+        switch (data.task) {
+            case PICK_CATEGORY -> setCategory(data);
+            case SET_SCORE ->  setScore(data);
+            case PLAYER_INFO -> setPlayer(data);
+            case FINNISH -> endGame(data);
+        }
+
         p1.sendData(data); // test
         p2.sendData(data); // test
+    }
+
+    private void setCategory(Data data) {
+    }
+
+    private void setScore(Data data) {
+    }
+
+    private void setPlayer(Data data) {
+    }
+
+    private void endGame(Data data) {
     }
 
 }
