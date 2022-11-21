@@ -20,7 +20,7 @@ public class ServerConnection implements Runnable {
         this.socket = socket;
         this.game = game;
         this.player = player;
-        this.data.setPlayer(player);
+        this.data.player = player;
     }
 
     @Override
