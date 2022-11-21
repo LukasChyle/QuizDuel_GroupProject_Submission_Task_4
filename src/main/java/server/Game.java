@@ -13,7 +13,7 @@ public class Game {
         this.p2 = p2;
     }
 
-    protected void protocol(Data data) {
+    protected void protocol(Data data) { // income data from Client
         System.out.println("Data came to server"); // test
         p1.sendData(data); // test
         p2.sendData(data); // test

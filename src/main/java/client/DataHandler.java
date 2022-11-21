@@ -30,7 +30,7 @@ public class DataHandler {
         connection.sendData(data);
     }
 
-    protected void readData(Data data) throws IOException { // Read the data from server and decide what to do.
+    protected void readData(Data data) throws IOException { // income data from server
         System.out.println("Data came to client"); // test
 
         switchToCategoryScene(new String[]{"Sport"}); // test
@@ -38,7 +38,7 @@ public class DataHandler {
 
     protected void setNode(Node node) {
         currentNode = node;
-    }
+    } // node from current scene to change for a new one.
 
     // makes the client go to the category scene to pick a category.
     protected void switchToCategoryScene(String[] categories) throws IOException {
