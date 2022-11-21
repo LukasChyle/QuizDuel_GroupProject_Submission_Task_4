@@ -28,6 +28,7 @@ public class DataHandler {
 
     protected void sendTestData() { // test metod to send data with.
         Data data = new Data();
+        data.task = Tasks.PICK_CATEGORY;
         // fill data with test values.
         connection.sendData(data);
     }
