@@ -13,10 +13,12 @@ public class ServerConnection implements Runnable {
     private final Game game;
     private ObjectOutputStream out;
     private ObjectInputStream in;
+    private int player;
 
-    protected ServerConnection(Socket socket, Game game) {
+    protected ServerConnection(Socket socket, Game game,int player) {
         this.socket = socket;
         this.game = game;
+        this.player = player;
     }
 
     @Override
