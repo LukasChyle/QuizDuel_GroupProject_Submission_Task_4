@@ -86,7 +86,6 @@ public class DataHandler {
         // TODO: send the category to the server.
     }
 
-
     private void setPlayer(Data data) { // set if player 1 or 2
         this.player = data.player;
         System.out.println(player); // test
