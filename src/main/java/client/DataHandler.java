@@ -15,8 +15,8 @@ import java.io.IOException;
 public class DataHandler {
 
     private final ClientConnection connection;
-    private int ownAvatar, opponentAvatar;
-    private String ownNickname, opponentNickname;
+    protected int ownAvatar, opponentAvatar;
+    protected String ownNickname, opponentNickname;
     protected Node currentNode;
     private int player;
 
@@ -37,7 +37,7 @@ public class DataHandler {
 
         switch (data.task) {
             case PICK_CATEGORY -> setCategory(data);
-            case SET_SCORE ->  setScore(data);
+            case SET_SCORE -> setScore(data);
             case SET_PLAYER -> setPlayer(data);
             case WAIT -> setWait(data);
             case OPPONENT_INFO -> setOpponentInfo(data);
@@ -104,12 +104,5 @@ public class DataHandler {
             stage.show();
             Movable.setMovable(scene, stage);
         });
-    }
-    public int getOwnAvatar() {
-        return ownAvatar;
-    }
-
-    public String getOwnNickname() {
-        return ownNickname;
     }
 }

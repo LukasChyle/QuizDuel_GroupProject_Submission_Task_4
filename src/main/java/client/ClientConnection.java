@@ -15,13 +15,12 @@ public class ClientConnection implements Runnable {
     private ObjectOutputStream out;
     private InetAddress host;
     private final DataHandler dataHandler;
-    private Data data;
 
     protected ClientConnection(String nickname, int avatar) {
         dataHandler = new DataHandler(nickname, avatar, this);
     }
 
-    protected DataHandler getDataHandler(){
+    protected DataHandler getDataHandler() {
         return dataHandler;
     }
 
@@ -51,9 +50,10 @@ public class ClientConnection implements Runnable {
              ObjectInputStream in = new ObjectInputStream(socket.getInputStream())) {
             out = new ObjectOutputStream(socket.getOutputStream());
 
+            Data data = new Data();
             data.task = Tasks.OPPONENT_INFO;
-            data.opponentNickname = dataHandler.getOwnNickname();
-            data.opponentAvatar = dataHandler.getOwnAvatar();
+            data.opponentNickname = dataHandler.ownNickname;
+            data.opponentAvatar = dataHandler.ownAvatar;
             sendData(data);
 
             while (true) {
