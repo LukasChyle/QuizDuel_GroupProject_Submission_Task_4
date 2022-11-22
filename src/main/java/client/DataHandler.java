@@ -85,13 +85,14 @@ public class DataHandler {
         connection.sendData(data);
     }
 
+
     private void setPlayer(Data data) { // set if player 1 or 2
         this.player = data.player;
         System.out.println(player); // test
     }
 
     private void setOpponentInfo(Data data) {
-        opponentAvatar = data.avatar;
+        opponentAvatar = data.opponentAvatar;
         opponentNickname = data.opponentNickname;
     }
 
@@ -103,5 +104,12 @@ public class DataHandler {
             stage.show();
             Movable.setMovable(scene, stage);
         });
+    }
+    public int getOwnAvatar() {
+        return ownAvatar;
+    }
+
+    public String getOwnNickname() {
+        return ownNickname;
     }
 }
