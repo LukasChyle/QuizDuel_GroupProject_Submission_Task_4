@@ -1,6 +1,7 @@
 package client;
 
 import data.Data;
+import data.Tasks;
 
 import java.io.IOException;
 import java.io.ObjectInputStream;
@@ -19,7 +20,7 @@ public class ClientConnection implements Runnable {
         dataHandler = new DataHandler(nickname, avatar, this);
     }
 
-    protected DataHandler getDataHandler(){
+    protected DataHandler getDataHandler() {
         return dataHandler;
     }
 

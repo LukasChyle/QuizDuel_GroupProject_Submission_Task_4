@@ -15,10 +15,10 @@ import java.io.IOException;
 public class DataHandler {
 
     private final ClientConnection connection;
-    private int ownAvatar, opponentAvatar;
-    private String ownNickname, opponentNickname;
+    protected int ownAvatar, opponentAvatar;
+    protected String ownNickname, opponentNickname;
     protected Node currentNode;
-    private int player;
+    protected int player;
 
     protected DataHandler(String nickname, int avatar, ClientConnection connection) {
         ownNickname = nickname;
@@ -37,13 +37,11 @@ public class DataHandler {
 
         switch (data.task) {
             case PICK_CATEGORY -> setCategory(data);
-            case SET_SCORE ->  setScore(data);
+            case SET_SCORE -> setScore(data);
             case SET_PLAYER -> setPlayer(data);
             case WAIT -> setWait(data);
             case OPPONENT_INFO -> setOpponentInfo(data);
         }
-
-        System.out.println("Data came to client"); // test
         this.player = data.player;
         System.out.println(player);
     }
@@ -85,13 +83,19 @@ public class DataHandler {
         connection.sendData(data);
     }
 
+
     private void setPlayer(Data data) { // set if player 1 or 2
         this.player = data.player;
-        System.out.println(player); // test
+        Data newData = new Data();
+        newData.task = Tasks.OPPONENT_INFO;
+        newData.opponentNickname = ownNickname;
+        newData.opponentAvatar = ownAvatar;
+        newData.player = player;
+        connection.sendData(newData);
     }
 
     private void setOpponentInfo(Data data) {
-        opponentAvatar = data.avatar;
+        opponentAvatar = data.opponentAvatar;
         opponentNickname = data.opponentNickname;
     }
 
