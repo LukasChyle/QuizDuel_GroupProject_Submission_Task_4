@@ -1,6 +1,5 @@
 package client;
 
-
 import data.Data;
 import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
@@ -26,15 +25,7 @@ public class DataHandler {
         this.connection = connection;
     }
 
-    protected void sendTestData() { // test metod to send data with.
-        Data data = new Data();
-        data.task = Tasks.PICK_CATEGORY;
-        // fill data with test values.
-        connection.sendData(data);
-    }
-
     protected void readData(Data data) throws IOException { // income data from server
-
         switch (data.task) {
             case PICK_CATEGORY -> setCategory(data);
             case SET_SCORE -> setScore(data);
@@ -47,14 +38,14 @@ public class DataHandler {
     protected void setWait(Data data) throws IOException {
         String cancelButtonText;
         if (data.task != null) {
-            cancelButtonText = "Exit";
-        } else {
             cancelButtonText = "Surrender";
+        } else {
+            cancelButtonText = "Exit";
         }
         FXMLLoader loader = new FXMLLoader(getClass().getResource("waitingScene.fxml"));
         Parent root = loader.load();
         WaitingController waitCon = loader.getController();
-        waitCon.setLayout(data.message, cancelButtonText, this);
+        waitCon.setLayout(data.message, cancelButtonText);
         startNewScene(root);
         currentNode = waitCon.getNode();
     }
@@ -95,6 +86,10 @@ public class DataHandler {
     private void setOpponentInfo(Data data) {
         opponentAvatar = data.opponentAvatar;
         opponentNickname = data.opponentNickname;
+        Data newData = new Data();
+        newData.task = Tasks.READY;
+        newData.player = player;
+        connection.sendData(newData);
     }
 
     private void startNewScene(Parent root) {

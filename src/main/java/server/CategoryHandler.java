@@ -12,6 +12,10 @@ public class CategoryHandler {
     public CategoryHandler() {
     }
 
+    protected String[] categoriesToChoose() {
+        return new String[] {"data", "mat", "film"};
+    }
+
     public List<String[]> getQuestions(String filePath) {
         try {
             Path path = Path.of("src", "main", "resources", "server", filePath);

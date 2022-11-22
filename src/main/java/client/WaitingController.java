@@ -12,19 +12,14 @@ public class WaitingController {
     private Label messageField;
     @FXML
     private Button closeButton;
-    private DataHandler dataHandler;
 
-    protected void setLayout(String message, String buttonText, DataHandler dataHandler) {
-        this.dataHandler = dataHandler;
+    protected void setLayout(String message, String buttonText) {
         messageField.setText(message);
         closeButton.setText(buttonText);
-
-        closeButton.setText("send test data"); // test
     }
 
     public void onCloseClick(ActionEvent event) {
-        dataHandler.sendTestData(); // test to send data to server.
-       // System.exit(0); // Change this to controlled disconnection later
+        System.exit(0); // Change this to controlled disconnection later
     }
 
     protected Node getNode() {

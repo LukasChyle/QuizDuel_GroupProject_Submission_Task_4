@@ -2,13 +2,14 @@ package server;
 
 import data.Data;
 import data.Tasks;
-
 import java.util.List;
 
 public class Game {
 private final CategoryHandler c = new CategoryHandler();
 
     private ServerConnection p1, p2;
+    Boolean playerOneIsReady = false;
+    Boolean playerTwoIsReady = false;
 
     protected void setPlayers(ServerConnection p1, ServerConnection p2) {
         this.p1 = p1;
@@ -22,24 +23,17 @@ private final CategoryHandler c = new CategoryHandler();
             case SET_SCORE ->  setScore(data);
             case OPPONENT_INFO -> setPlayer(data);
             case FINNISH -> endGame(data);
+            case READY -> startGame(data);
         }
     }
 
     private void setCategory(Data data) {
-        //test
-        System.out.println("gets here 1");
-        data.task = Tasks.PICK_CATEGORY;
-        data.categoriesToChoose = new String[] {"data"};
-        p1.sendData(data);
-        p2.sendData(data);
-        System.out.println("gets here 2");
 
-        /*
         List<String[]> ar = c.getQuestions(data.message);
         Data data1 = new Data();
         data1.task = Tasks.ROUND;
         data1.questions = ar;
-         */
+
     }
 
     private void setScore(Data data) {
@@ -52,6 +46,28 @@ private final CategoryHandler c = new CategoryHandler();
             p1.sendData(data);
         }
     }
+
+    private void startGame(Data data){
+
+        if (data.player == 1) {
+            playerOneIsReady = true;
+        } else if (data.player == 2) {
+            playerTwoIsReady = true;
+        }
+
+        if (playerOneIsReady && playerTwoIsReady) {
+            Data data1 = new Data();
+            data1.task = Tasks.PICK_CATEGORY;
+            data1.categoriesToChoose = c.categoriesToChoose();
+            p1.sendData(data1);
+
+            Data data2 = new Data();
+            data2.task = Tasks.WAIT;
+            data2.message = "Opponent is picking a category";
+            p2.sendData(data2);
+        }
+    }
+
     private void endGame(Data data) {
 
     }
