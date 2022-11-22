@@ -68,16 +68,12 @@ public class DataHandler {
     }
 
 
-    // makes the client go to the category scene to pick a category.
+    // makes the client go to category scene to pick a category from a selection.
     private void setCategory(Data data) throws IOException {
-
-        // TODO: get String[] with categories from Data object.
-        String[] categories = new String[]{"Sport"}; //test
-
         FXMLLoader loader = new FXMLLoader(getClass().getResource("categoryScene.fxml"));
         Parent root = loader.load();
         CategoryController categoryCon = loader.getController();
-        categoryCon.setCategories(categories, this);
+        categoryCon.setCategories(data.categoriesToChoose, this);
         startNewScene(root);
         currentNode = categoryCon.getNode();
     }
