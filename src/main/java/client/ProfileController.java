@@ -1,5 +1,6 @@
 package client;
 
+import data.Data;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -45,18 +46,11 @@ public class ProfileController {
         setNickname();
         if (nickname != null) {
             ClientConnection connection = new ClientConnection(nickname, avatar);
-            Thread cThread = new Thread(connection);
-            cThread.start();
-
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("waitingScene.fxml"));
-            Parent root = loader.load();
-            WaitingController waitCon = loader.getController();
-            waitCon.setLayout("Waiting for a opponent", "Exit", connection.getDataHandler());
-            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            Scene scene = new Scene(root);
-            stage.setScene(scene);
-            stage.show();
-            Movable.setMovable(scene, stage);
+            new Thread(connection).start();
+            connection.getDataHandler().currentNode = nickTextField;
+            Data data = new Data();
+            data.message = "Waiting for a opponent";
+            connection.getDataHandler().setWait(data);
         }
     }
 

@@ -7,7 +7,7 @@
 
 <AnchorPane prefHeight="500.0" prefWidth="350.0" xmlns="http://javafx.com/javafx/11.0.14-internal"
             xmlns:fx="http://javafx.com/fxml/1" fx:controller="client.WaitingController">
-   <Label fx:id="MessageField" alignment="CENTER" layoutX="25.0" layoutY="140.0" prefHeight="40.0" prefWidth="300.0"
+   <Label fx:id="messageField" alignment="CENTER" layoutX="25.0" layoutY="140.0" prefHeight="40.0" prefWidth="300.0"
           text="Opponent is picking category">
       <font>
          <Font name="System Bold" size="18.0"/>

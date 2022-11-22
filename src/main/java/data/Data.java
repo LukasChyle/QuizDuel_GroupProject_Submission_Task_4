@@ -8,4 +8,5 @@ public class Data implements Serializable {
     public int player;
     public int avatar;
     public String opponentNickname;
+    public String message;
 }

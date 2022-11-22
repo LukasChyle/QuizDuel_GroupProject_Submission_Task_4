@@ -17,7 +17,7 @@ public class DataHandler {
     private final ClientConnection connection;
     private int ownAvatar, opponentAvatar;
     private String ownNickname, opponentNickname;
-    private Node currentNode;
+    protected Node currentNode;
     private int player;
 
     protected DataHandler(String nickname, int avatar, ClientConnection connection) {
@@ -48,13 +48,21 @@ public class DataHandler {
         System.out.println(player);
     }
 
-    private void setOpponentInfo(Data data) {
-        opponentAvatar = data.avatar;
-        opponentNickname = data.opponentNickname;
-    }
+    protected void setWait(Data data) throws IOException {
 
-    private void setWait(Data data) {
-        // TODO: Create wait scene with specific message.
+        String cancelButtonText;
+        if (data.task != null) {
+            cancelButtonText = "Exit";
+        } else {
+            cancelButtonText = "Surrender";
+        }
+
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("waitingScene.fxml"));
+        Parent root = loader.load();
+        WaitingController waitCon = loader.getController();
+        waitCon.setLayout(data.message, cancelButtonText, this);
+        startNewScene(root);
+        currentNode = waitCon.getNode();
     }
 
     private void setScore(Data data) {
@@ -63,7 +71,7 @@ public class DataHandler {
 
 
     // makes the client go to the category scene to pick a category.
-    protected void setCategory(Data data) throws IOException {
+    private void setCategory(Data data) throws IOException {
 
         // TODO: get String[] with categories from Data object.
         String[] categories = new String[]{"Sport"}; //test
@@ -72,13 +80,8 @@ public class DataHandler {
         Parent root = loader.load();
         CategoryController categoryCon = loader.getController();
         categoryCon.setCategories(categories, this);
-        Stage stage = (Stage) currentNode.getScene().getWindow();
-        Scene scene = new Scene(root);
-        Platform.runLater(() -> {
-            stage.setScene(scene);
-            stage.show();
-            Movable.setMovable(scene, stage);
-        });
+        startNewScene(root);
+        currentNode = categoryCon.getNode();
     }
 
     protected void chosenCategory(String category) { // Client returns a category for the server.
@@ -91,7 +94,18 @@ public class DataHandler {
         System.out.println(player); // test
     }
 
-    protected void setNode(Node node) {
-        currentNode = node;
-    } // node from current scene to change for a new one.
+    private void setOpponentInfo(Data data) {
+        opponentAvatar = data.avatar;
+        opponentNickname = data.opponentNickname;
+    }
+
+    private void startNewScene(Parent root) {
+        Stage stage = (Stage) currentNode.getScene().getWindow();
+        Scene scene = new Scene(root);
+        Platform.runLater(() -> {
+            stage.setScene(scene);
+            stage.show();
+            Movable.setMovable(scene, stage);
+        });
+    }
 }

@@ -3,6 +3,7 @@ package client;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 
@@ -59,6 +60,10 @@ public class CategoryController implements Runnable {
         Platform.runLater(() -> {
             countdownField.setText(text);
         });
+    }
+
+    protected Node getNode() {
+        return countdownField;
     }
 
     @Override // Timer that will pick random category if player don't chose.
