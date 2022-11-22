@@ -42,8 +42,6 @@ public class DataHandler {
             case WAIT -> setWait(data);
             case OPPONENT_INFO -> setOpponentInfo(data);
         }
-
-        System.out.println("Data came to client"); // test
         this.player = data.player;
         System.out.println(player);
     }
@@ -88,7 +86,12 @@ public class DataHandler {
 
     private void setPlayer(Data data) { // set if player 1 or 2
         this.player = data.player;
-        System.out.println(player); // test
+        Data newData = new Data();
+        newData.task = Tasks.OPPONENT_INFO;
+        newData.opponentNickname = ownNickname;
+        newData.opponentAvatar = ownAvatar;
+        newData.player = player;
+        connection.sendData(newData);
     }
 
     private void setOpponentInfo(Data data) {

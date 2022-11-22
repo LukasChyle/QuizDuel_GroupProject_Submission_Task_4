@@ -50,13 +50,6 @@ public class ClientConnection implements Runnable {
              ObjectInputStream in = new ObjectInputStream(socket.getInputStream())) {
             out = new ObjectOutputStream(socket.getOutputStream());
 
-            Data data = new Data();
-            data.task = Tasks.OPPONENT_INFO;
-            data.opponentNickname = dataHandler.ownNickname;
-            data.opponentAvatar = dataHandler.ownAvatar;
-            data.player = dataHandler.player;
-            sendData(data);
-
             while (true) {
                 Data inData = (Data) in.readObject();
                 dataHandler.readData(inData);
