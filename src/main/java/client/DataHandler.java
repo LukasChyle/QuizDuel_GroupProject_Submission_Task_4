@@ -11,7 +11,6 @@ import javafx.stage.Stage;
 import data.Tasks;
 
 import java.io.IOException;
-import java.util.ArrayList;
 
 public class DataHandler {
 
@@ -20,8 +19,6 @@ public class DataHandler {
     private String ownNickname, opponentNickname;
     protected Node currentNode;
     private int player;
-
-    private ArrayList<String[]> questions;
 
     protected DataHandler(String nickname, int avatar, ClientConnection connection) {
         ownNickname = nickname;
@@ -52,14 +49,12 @@ public class DataHandler {
     }
 
     protected void setWait(Data data) throws IOException {
-
         String cancelButtonText;
         if (data.task != null) {
             cancelButtonText = "Exit";
         } else {
             cancelButtonText = "Surrender";
         }
-
         FXMLLoader loader = new FXMLLoader(getClass().getResource("waitingScene.fxml"));
         Parent root = loader.load();
         WaitingController waitCon = loader.getController();
@@ -73,26 +68,21 @@ public class DataHandler {
     }
 
 
-    // makes the client go to the category scene to pick a category.
+    // makes the client go to category scene to pick a category from a selection.
     private void setCategory(Data data) throws IOException {
-
-
-        // TODO: get String[] with categories from Data object.
-
-        String[] categories = new String[]{"Sport","Vetenskap"}; //test
-
         FXMLLoader loader = new FXMLLoader(getClass().getResource("categoryScene.fxml"));
         Parent root = loader.load();
         CategoryController categoryCon = loader.getController();
-        categoryCon.setCategories(categories, this);
+        categoryCon.setCategories(data.categoriesToChoose, this);
         startNewScene(root);
         currentNode = categoryCon.getNode();
     }
 
     protected void chosenCategory(String category) { // Client returns a category for the server.
         Data data = new Data();
+        data.task = Tasks.PICK_CATEGORY;
         data.message = category;
-        // TODO: send the category to the server.
+        connection.sendData(data);
     }
 
     private void setPlayer(Data data) { // set if player 1 or 2
