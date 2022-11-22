@@ -12,5 +12,6 @@ public class Data implements Serializable {
     public String message;
     public String[] categoriesToChoose;
     public List<String[]> questions;
+    public Boolean[] roundScore;
     public int round;
 }

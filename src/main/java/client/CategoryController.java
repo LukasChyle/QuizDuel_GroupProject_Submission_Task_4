@@ -1,6 +1,7 @@
 package client;
 
 import data.Data;
+import data.Tasks;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -16,11 +17,12 @@ public class CategoryController implements Runnable {
     private Button category1Button, category2Button, category3Button;
     @FXML
     private Label countdownField;
-    private DataHandler dataHandler;
+    private ClientConnection clientConnection;
     private int numberOfCategories;
+    private boolean breakTimer;
 
-    protected void setCategories(String[] categories, DataHandler dataHandler) {
-        this.dataHandler = dataHandler;
+    protected void setCategories(String[] categories, ClientConnection clientConnection) {
+        this.clientConnection = clientConnection;
         numberOfCategories = categories.length;
 
         category1Button.setText(categories[0]);
@@ -39,17 +41,17 @@ public class CategoryController implements Runnable {
 
     @FXML
     protected void onButton1Click() {
-        dataHandler.chosenCategory(category1Button.getText());
+        chosenCategory(category1Button.getText());
     }
 
     @FXML
     protected void onButton2Click() {
-        dataHandler.chosenCategory(category2Button.getText());
+        chosenCategory(category2Button.getText());
     }
 
     @FXML
     protected void onButton3Click() {
-        dataHandler.chosenCategory(category3Button.getText());
+        chosenCategory(category3Button.getText());
     }
 
     @FXML
@@ -57,10 +59,12 @@ public class CategoryController implements Runnable {
         System.exit(0); // Change this to controlled disconnection later.
     }
 
-    private void setCountdownText(String text) {
-        Platform.runLater(() -> {
-            countdownField.setText(text);
-        });
+    protected void chosenCategory(String category) { // Client returns a category for the server.
+        breakTimer = true;
+        Data data = new Data();
+        data.task = Tasks.PICK_CATEGORY;
+        data.message = category;
+        clientConnection.sendData(data);
     }
 
     protected Node getNode() {
@@ -74,6 +78,7 @@ public class CategoryController implements Runnable {
         long lastTime = System.nanoTime();
         long currentTime;
 
+        breakTimer = false;
         setCountdownText("10");
         for (int i = 10; i > 0; ) {
             currentTime = System.nanoTime();
@@ -85,6 +90,9 @@ public class CategoryController implements Runnable {
                 setCountdownText(String.valueOf(i));
                 delta--;
             }
+            if (breakTimer) {
+                return;
+            }
         }
         Random random = new Random();
         int number = random.nextInt(numberOfCategories);
@@ -93,5 +101,11 @@ public class CategoryController implements Runnable {
             case 1 -> onButton2Click();
             case 2 -> onButton3Click();
         }
+    }
+
+    private void setCountdownText(String text) {
+        Platform.runLater(() -> {
+            countdownField.setText(text);
+        });
     }
 }

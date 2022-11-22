@@ -13,7 +13,7 @@ import java.io.IOException;
 
 public class DataHandler {
 
-    private final ClientConnection connection;
+    protected final ClientConnection connection;
     protected int ownAvatar, opponentAvatar;
     protected String ownNickname, opponentNickname;
     protected Node currentNode;
@@ -40,7 +40,7 @@ public class DataHandler {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("questionScene.fxml"));
         Parent root = loader.load();
         QuestionController questionCon = loader.getController();
-        questionCon.setLayout(data.questions, data.message, this);
+        questionCon.setScene(data.questions, data.message, connection);
         startNewScene(root);
         currentNode = questionCon.getNode();
     }
@@ -64,24 +64,15 @@ public class DataHandler {
         // TODO: Create scoreboard scene
     }
 
-
     // makes the client go to category scene to pick a category from a selection.
     private void setCategory(Data data) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("categoryScene.fxml"));
         Parent root = loader.load();
         CategoryController categoryCon = loader.getController();
-        categoryCon.setCategories(data.categoriesToChoose, this);
+        categoryCon.setCategories(data.categoriesToChoose, connection);
         startNewScene(root);
         currentNode = categoryCon.getNode();
     }
-
-    protected void chosenCategory(String category) { // Client returns a category for the server.
-        Data data = new Data();
-        data.task = Tasks.PICK_CATEGORY;
-        data.message = category;
-        connection.sendData(data);
-    }
-
 
     private void setPlayer(Data data) { // set if player 1 or 2
         this.player = data.player;

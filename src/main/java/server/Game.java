@@ -19,7 +19,6 @@ private final CategoryHandler c = new CategoryHandler();
     }
 
     protected void protocol(Data data) { // income data from Client
-
         switch (data.task) {
             case PICK_CATEGORY -> setCategory(data);
             case SET_SCORE ->  setScore(data);
@@ -30,13 +29,11 @@ private final CategoryHandler c = new CategoryHandler();
     }
 
     private void setCategory(Data data) {
-
         List<String[]> ar = c.getQuestions(data.message);
         Data data1 = new Data();
         data1.task = Tasks.ROUND;
         data1.message = data.message;
         data1.questions = ar;
-
     }
 
     private void setScore(Data data) {
@@ -57,6 +54,7 @@ private final CategoryHandler c = new CategoryHandler();
             playerTwoIsReady = true;
         }
         if (playerOneIsReady && playerTwoIsReady) {
+            round++;
             Data data1 = new Data();
             data1.task = Tasks.PICK_CATEGORY;
             data1.categoriesToChoose = c.categoriesToChoose();
@@ -73,7 +71,6 @@ private final CategoryHandler c = new CategoryHandler();
                 p2.sendData(data1);
                 currentPlayer = 1;
             }
-            round++;
             playerOneIsReady = false;
             playerTwoIsReady = false;
         }

@@ -10,7 +10,7 @@ import java.util.Random;
 public class CategoryHandler {
 
     protected String[] categoriesToChoose() {
-        return new String[] {"data", "mat", "film"};
+        return new String[] {"Sport", "Vetenskap"};
     }
 
     public List<String[]> getQuestions(String filePath) {
@@ -28,7 +28,7 @@ public class CategoryHandler {
                 question = questionsArray[i].split("\n");
                 listOfQuestions.add(question);
             }
-            int randIndex = 0;
+            int randIndex;
             ArrayList<String[]> finalQuestions = new ArrayList<>();
             for (int i = 0; i < 3; i++) {
                 Random r = new Random();

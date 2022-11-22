@@ -30,7 +30,6 @@ public class ProfileController {
     protected void setNickname() {
         if (nickTextField != null && !nickTextField.getText().isBlank() && nickTextField.getText().length() <= 15) {
             nickname = nickTextField.getText().trim();
-            System.out.println("Name changed to: " + nickname);
         } else if (nickTextField != null) {
             nickTextField.setText("");
         }

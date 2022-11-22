@@ -27,9 +27,11 @@ public class ClientConnection implements Runnable {
     protected void sendData(Data outData) {
         if (out != null) {
             try {
+                System.out.println("Client " + dataHandler.player + " tries to send " + outData.task + " to server");
                 out.writeObject(outData);
                 out.flush();
                 out.reset();
+                System.out.println("Client " + dataHandler.player + " did send " + outData.task + " to server");
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -52,6 +54,7 @@ public class ClientConnection implements Runnable {
 
             while (true) {
                 Data inData = (Data) in.readObject();
+                System.out.println("Client " + dataHandler.player + " received " + inData.task + " from server");
                 dataHandler.readData(inData);
             }
         } catch (IOException | ClassNotFoundException e) {

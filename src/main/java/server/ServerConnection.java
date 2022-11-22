@@ -35,6 +35,7 @@ public class ServerConnection implements Runnable {
 
             while (true) {
                 Data inData = (Data) in.readObject();
+                System.out.println("(Sever) received " + inData.task + " from client " + player);
                 game.protocol(inData);
             }
         } catch (IOException | ClassNotFoundException e) {
@@ -51,9 +52,11 @@ public class ServerConnection implements Runnable {
 
     public void sendData(Data outData) {
         try {
+            System.out.println("(Sever) tries to send " + outData.task + " to client " + player);
             out.writeObject(outData);
             out.flush();
             out.reset();
+            System.out.println("(Sever) did send " + outData.task + " to client " + player);
         } catch (IOException e) {
             e.printStackTrace();
         }
