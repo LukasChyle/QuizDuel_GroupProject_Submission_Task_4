@@ -42,8 +42,6 @@ public class DataHandler {
             case WAIT -> setWait(data);
             case OPPONENT_INFO -> setOpponentInfo(data);
         }
-        this.player = data.player;
-        System.out.println(player);
     }
 
     protected void setWait(Data data) throws IOException {

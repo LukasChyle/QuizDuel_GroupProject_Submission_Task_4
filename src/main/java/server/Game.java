@@ -3,7 +3,6 @@ package server;
 import data.Data;
 import data.Tasks;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class Game {
@@ -27,11 +26,20 @@ private final CategoryHandler c = new CategoryHandler();
     }
 
     private void setCategory(Data data) {
+        //test
+        System.out.println("gets here 1");
+        data.task = Tasks.PICK_CATEGORY;
+        data.categoriesToChoose = new String[] {"data"};
+        p1.sendData(data);
+        p2.sendData(data);
+        System.out.println("gets here 2");
+
+        /*
         List<String[]> ar = c.getQuestions(data.message);
         Data data1 = new Data();
         data1.task = Tasks.ROUND;
         data1.questions = ar;
-
+         */
     }
 
     private void setScore(Data data) {
