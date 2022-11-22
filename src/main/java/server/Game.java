@@ -24,6 +24,7 @@ public class Game {
             case FINNISH -> endGame(data);
         }
 
+        data.categoriesToChoose = new String[] {"Sport", "Vetenskap", "Godissorter"}; // test
         p1.sendData(data); // test
         p2.sendData(data); // test
     }
