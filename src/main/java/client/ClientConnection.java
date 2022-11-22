@@ -1,6 +1,7 @@
 package client;
 
 import data.Data;
+import data.Tasks;
 
 import java.io.IOException;
 import java.io.ObjectInputStream;
@@ -14,6 +15,7 @@ public class ClientConnection implements Runnable {
     private ObjectOutputStream out;
     private InetAddress host;
     private final DataHandler dataHandler;
+    private Data data;
 
     protected ClientConnection(String nickname, int avatar) {
         dataHandler = new DataHandler(nickname, avatar, this);
@@ -48,6 +50,11 @@ public class ClientConnection implements Runnable {
         try (Socket socket = new Socket(host, port);
              ObjectInputStream in = new ObjectInputStream(socket.getInputStream())) {
             out = new ObjectOutputStream(socket.getOutputStream());
+
+            data.task = Tasks.OPPONENT_INFO;
+            data.opponentNickname = dataHandler.getOwnNickname();
+            data.opponentAvatar = dataHandler.getOwnAvatar();
+            sendData(data);
 
             while (true) {
                 Data inData = (Data) in.readObject();
