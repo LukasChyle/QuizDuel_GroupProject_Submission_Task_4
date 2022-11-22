@@ -49,7 +49,7 @@ private final CategoryHandler c = new CategoryHandler();
         }
     }
 
-    private void startRound(Data data){
+    private void startRound(Data data){ // waits for both players, each round current player is switched.
         if (data.player == 1) {
             playerOneIsReady = true;
         } else if (data.player == 2) {

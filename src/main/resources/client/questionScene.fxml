@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="500.0" prefWidth="350.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="client.QuestionController">
+   <TextArea fx:id="questionTextArea" layoutX="25.0" layoutY="65.0" prefHeight="90.0" prefWidth="300.0" promptText="Question" style="-fx-text-alignment: center;" wrapText="true">
+      <font>
+         <Font size="18.0" />
+      </font>
+   </TextArea>
+   <Button fx:id="button1" layoutX="25.0" layoutY="170.0" mnemonicParsing="false" onAction="#onButton1Click" prefHeight="50.0" prefWidth="300.0" text="Option 1">
+      <font>
+         <Font size="14.0" />
+      </font>
+   </Button>
+   <Label fx:id="countdownLabel" alignment="CENTER" layoutX="75.0" layoutY="15.0" prefHeight="50.0" prefWidth="200.0" text="Time Left: 15">
+      <font>
+         <Font size="14.0" />
+      </font>
+   </Label>
+   <Button fx:id="button2" layoutX="25.0" layoutY="240.0" mnemonicParsing="false" onAction="#onButton2Click" prefHeight="50.0" prefWidth="300.0" text="Option 2">
+      <font>
+         <Font size="14.0" />
+      </font>
+   </Button>
+   <Button fx:id="button3" layoutX="25.0" layoutY="310.0" mnemonicParsing="false" onAction="#onButton3Click" prefHeight="50.0" prefWidth="300.0" text="Option 3">
+      <font>
+         <Font size="14.0" />
+      </font>
+   </Button>
+   <Button fx:id="button4" layoutX="25.0" layoutY="380.0" mnemonicParsing="false" onAction="#onButton4Click" prefHeight="50.0" prefWidth="300.0" text="Option 4">
+      <font>
+         <Font size="14.0" />
+      </font>
+   </Button>
+   <Button fx:id="closeButton" layoutX="125.0" layoutY="450.0" mnemonicParsing="false" onAction="#onCloseClick" prefHeight="40.0" prefWidth="100.0" text="Surrender" />
+</AnchorPane>
