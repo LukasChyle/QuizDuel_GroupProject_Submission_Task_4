@@ -18,7 +18,7 @@ public class DataHandler {
     protected int ownAvatar, opponentAvatar;
     protected String ownNickname, opponentNickname;
     protected Node currentNode;
-    private int player;
+    protected int player;
 
     protected DataHandler(String nickname, int avatar, ClientConnection connection) {
         ownNickname = nickname;

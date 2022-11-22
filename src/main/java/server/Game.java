@@ -20,7 +20,7 @@ public class Game {
         switch (data.task) {
             case PICK_CATEGORY -> setCategory(data);
             case SET_SCORE ->  setScore(data);
-            case PLAYER_INFO -> setPlayer(data);
+            case OPPONENT_INFO -> setPlayer(data);
             case FINNISH -> endGame(data);
         }
 
@@ -37,6 +37,10 @@ public class Game {
     }
 
     private void setPlayer(Data data) {
+        //skikca data till motståndare
+        // if data.playar = 1 skickat till 2
+
+
     }
 
     private void endGame(Data data) {

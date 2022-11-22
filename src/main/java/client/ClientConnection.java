@@ -54,6 +54,7 @@ public class ClientConnection implements Runnable {
             data.task = Tasks.OPPONENT_INFO;
             data.opponentNickname = dataHandler.ownNickname;
             data.opponentAvatar = dataHandler.ownAvatar;
+            data.player = dataHandler.player;
             sendData(data);
 
             while (true) {
