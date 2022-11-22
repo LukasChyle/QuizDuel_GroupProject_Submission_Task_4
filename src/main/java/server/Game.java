@@ -37,10 +37,14 @@ public class Game {
     }
 
     private void setPlayer(Data data) {
-        //skikca data till motståndare
-        // if data.playar = 1 skickat till 2
-
-
+        System.out.println("kom fram till setPLayer");
+        if (data.player == 1){
+            System.out.println("Data kom player 1");
+            p2.sendData(data);
+        } else if (data.player == 2) {
+            System.out.println("Data kom player 2");
+            p1.sendData(data);
+        }
     }
 
     private void endGame(Data data) {
