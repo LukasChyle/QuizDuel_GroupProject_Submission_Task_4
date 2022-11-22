@@ -11,6 +11,7 @@ import javafx.stage.Stage;
 import data.Tasks;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 public class DataHandler {
 
@@ -19,6 +20,8 @@ public class DataHandler {
     private String ownNickname, opponentNickname;
     protected Node currentNode;
     private int player;
+
+    private ArrayList<String[]> questions;
 
     protected DataHandler(String nickname, int avatar, ClientConnection connection) {
         ownNickname = nickname;
@@ -73,8 +76,10 @@ public class DataHandler {
     // makes the client go to the category scene to pick a category.
     private void setCategory(Data data) throws IOException {
 
+
         // TODO: get String[] with categories from Data object.
-        String[] categories = new String[]{"Sport"}; //test
+
+        String[] categories = new String[]{"Sport","Vetenskap"}; //test
 
         FXMLLoader loader = new FXMLLoader(getClass().getResource("categoryScene.fxml"));
         Parent root = loader.load();
@@ -86,6 +91,7 @@ public class DataHandler {
 
     protected void chosenCategory(String category) { // Client returns a category for the server.
         Data data = new Data();
+        data.message = category;
         // TODO: send the category to the server.
     }
 

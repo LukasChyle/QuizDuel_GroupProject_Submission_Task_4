@@ -8,17 +8,11 @@ import java.util.List;
 
 public class CategoryHandler {
 
-    public CategoryHandler() {
+    public CategoryHandler(String filePath) {
     }
 
-    public void getContries() {
-    } // exempli kategori
-
-    public void getAnimal() {
-    } // exempli kategori
-
-    public List<String[]> getSport() throws IOException {
-        Path path = Path.of("src", "main", "resources", "server", "Sport");
+    public List<String[]> getQuestions(String filePath) throws IOException {
+        Path path = Path.of("src", "main", "resources", "server", filePath);
 
         String strFile = Files.readString(path);
         String[] questionsArray;

@@ -29,6 +29,7 @@ public class Game {
     }
 
     private void setCategory(Data data) {
+
     }
 
     private void setScore(Data data) {
