@@ -87,7 +87,7 @@ public class DataHandler {
         opponentAvatar = data.opponentAvatar;
         opponentNickname = data.opponentNickname;
         Data newData = new Data();
-        newData.task = Tasks.READY;
+        newData.task = Tasks.READY_ROUND;
         newData.player = player;
         connection.sendData(newData);
     }

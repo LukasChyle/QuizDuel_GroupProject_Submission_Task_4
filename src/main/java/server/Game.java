@@ -8,8 +8,10 @@ public class Game {
 private final CategoryHandler c = new CategoryHandler();
 
     private ServerConnection p1, p2;
-    Boolean playerOneIsReady = false;
-    Boolean playerTwoIsReady = false;
+    private Boolean playerOneIsReady = false;
+    private Boolean playerTwoIsReady = false;
+    private int round = 0;
+    private int currentPlayer = 1;
 
     protected void setPlayers(ServerConnection p1, ServerConnection p2) {
         this.p1 = p1;
@@ -23,7 +25,7 @@ private final CategoryHandler c = new CategoryHandler();
             case SET_SCORE ->  setScore(data);
             case OPPONENT_INFO -> setPlayer(data);
             case FINNISH -> endGame(data);
-            case READY -> startGame(data);
+            case READY_ROUND -> startRound(data);
         }
     }
 
@@ -47,24 +49,32 @@ private final CategoryHandler c = new CategoryHandler();
         }
     }
 
-    private void startGame(Data data){
-
+    private void startRound(Data data){
         if (data.player == 1) {
             playerOneIsReady = true;
         } else if (data.player == 2) {
             playerTwoIsReady = true;
         }
-
         if (playerOneIsReady && playerTwoIsReady) {
             Data data1 = new Data();
             data1.task = Tasks.PICK_CATEGORY;
             data1.categoriesToChoose = c.categoriesToChoose();
-            p1.sendData(data1);
-
             Data data2 = new Data();
             data2.task = Tasks.WAIT;
             data2.message = "Opponent is picking a category";
-            p2.sendData(data2);
+
+            if (currentPlayer == 1) {
+                p1.sendData(data1);
+                p2.sendData(data2);
+                currentPlayer = 2;
+            } else {
+                p1.sendData(data2);
+                p2.sendData(data1);
+                currentPlayer = 1;
+            }
+            round++;
+            playerOneIsReady = false;
+            playerTwoIsReady = false;
         }
     }
 
