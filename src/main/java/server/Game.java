@@ -41,5 +41,4 @@ public class Game {
 
     private void endGame(Data data) {
     }
-
 }
