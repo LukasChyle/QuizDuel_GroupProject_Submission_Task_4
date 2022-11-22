@@ -9,4 +9,5 @@ public class Data implements Serializable {
     public int avatar;
     public String opponentNickname;
     public String message;
+    public String[] categoriesToChoose;
 }

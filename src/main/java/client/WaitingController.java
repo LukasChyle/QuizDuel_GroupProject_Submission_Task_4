@@ -24,7 +24,7 @@ public class WaitingController {
 
     public void onCloseClick(ActionEvent event) {
         dataHandler.sendTestData(); // test to send data to server.
-       // System.exit(0); // Temporary
+       // System.exit(0); // Change this to controlled disconnection later
     }
 
     protected Node getNode() {

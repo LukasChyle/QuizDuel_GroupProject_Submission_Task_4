@@ -53,7 +53,7 @@ public class CategoryController implements Runnable {
 
     @FXML
     protected void onSurrenderClick(ActionEvent event) {
-        System.exit(0); // Temporary
+        System.exit(0); // Change this to controlled disconnection later.
     }
 
     private void setCountdownText(String text) {

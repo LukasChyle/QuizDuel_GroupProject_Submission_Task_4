@@ -49,14 +49,12 @@ public class DataHandler {
     }
 
     protected void setWait(Data data) throws IOException {
-
         String cancelButtonText;
         if (data.task != null) {
             cancelButtonText = "Exit";
         } else {
             cancelButtonText = "Surrender";
         }
-
         FXMLLoader loader = new FXMLLoader(getClass().getResource("waitingScene.fxml"));
         Parent root = loader.load();
         WaitingController waitCon = loader.getController();
