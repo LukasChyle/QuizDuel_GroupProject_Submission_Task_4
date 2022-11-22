@@ -4,8 +4,10 @@ import data.Data;
 import data.Tasks;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Game {
+private final CategoryHandler c = new CategoryHandler();
 
     private ServerConnection p1, p2;
 
@@ -29,6 +31,10 @@ public class Game {
     }
 
     private void setCategory(Data data) {
+        List<String[]> ar = c.getQuestions(data.message);
+        Data data1 = new Data();
+        data1.task = Tasks.ROUND;
+        data1.questions = ar;
 
     }
 

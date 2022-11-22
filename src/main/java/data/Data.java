@@ -1,6 +1,7 @@
 package data;
 
 import java.io.Serializable;
+import java.util.List;
 
 public class Data implements Serializable {
 
@@ -10,4 +11,6 @@ public class Data implements Serializable {
     public String opponentNickname;
     public String message;
     public String[] categoriesToChoose;
+    public List<String[]> questions;
+    public int round;
 }
