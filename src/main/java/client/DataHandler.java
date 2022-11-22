@@ -31,8 +31,18 @@ public class DataHandler {
             case SET_SCORE -> setScore(data);
             case SET_PLAYER -> setPlayer(data);
             case WAIT -> setWait(data);
+            case ROUND -> setRound(data);
             case OPPONENT_INFO -> setOpponentInfo(data);
         }
+    }
+
+    private void setRound(Data data) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("questionScene.fxml"));
+        Parent root = loader.load();
+        QuestionController questionCon = loader.getController();
+        questionCon.setLayout(data.questions, data.message, this);
+        startNewScene(root);
+        currentNode = questionCon.getNode();
     }
 
     protected void setWait(Data data) throws IOException {

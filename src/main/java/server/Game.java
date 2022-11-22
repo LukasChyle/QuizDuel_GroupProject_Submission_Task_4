@@ -34,6 +34,7 @@ private final CategoryHandler c = new CategoryHandler();
         List<String[]> ar = c.getQuestions(data.message);
         Data data1 = new Data();
         data1.task = Tasks.ROUND;
+        data1.message = data.message;
         data1.questions = ar;
 
     }

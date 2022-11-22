@@ -9,9 +9,6 @@ import java.util.Random;
 
 public class CategoryHandler {
 
-    public CategoryHandler() {
-    }
-
     protected String[] categoriesToChoose() {
         return new String[] {"data", "mat", "film"};
     }
