@@ -4,13 +4,14 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 
 public class CategoryHandler {
 
     protected String[] categoriesToChoose() {
-        return new String[] {"Sport", "Vetenskap"};
+        return new String[]{"Sport", "Vetenskap", "Musik"};
     }
 
     public List<String[]> getQuestions(String filePath) {
@@ -28,16 +29,26 @@ public class CategoryHandler {
                 question = questionsArray[i].split("\n");
                 listOfQuestions.add(question);
             }
+
+            /*
+            // test loop to se how the list is created.
+            for (int j = 0; j < listOfQuestions.size(); j++) {
+                System.out.println("Question " + j);
+                for (String str : listOfQuestions.get(j)) {
+                    System.out.println(str);
+                }
+            }
+            */
+
             int randIndex;
             ArrayList<String[]> finalQuestions = new ArrayList<>();
             for (int i = 0; i < 3; i++) {
                 Random r = new Random();
-                randIndex = r.nextInt(0, listOfQuestions.size() - 1);
+                randIndex = r.nextInt(1, listOfQuestions.size() - 1); // origin have to be 1.
                 finalQuestions.add(listOfQuestions.get(randIndex));
             }
             return finalQuestions;
-        }
-        catch (IOException e){
+        } catch (IOException e) {
             e.printStackTrace();
         }
         return null;

@@ -34,6 +34,8 @@ private final CategoryHandler c = new CategoryHandler();
         data1.task = Tasks.ROUND;
         data1.message = data.message;
         data1.questions = ar;
+        p1.sendData(data1);
+        p2.sendData(data1);
     }
 
     private void setScore(Data data) {

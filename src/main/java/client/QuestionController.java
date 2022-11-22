@@ -10,6 +10,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 
@@ -62,12 +63,15 @@ public class QuestionController implements Runnable {
     private void setLayout() {
         Platform.runLater(() -> {
             String[] question = questionsList.get(questionNumber);
-            questionTextArea.setText(question[0].trim());
-            button1.setText(question[1].trim());
-            button2.setText(question[2].trim());
-            button3.setText(question[3].trim());
-            button4.setText(question[4].trim());
-            currentAnswer = Integer.parseInt(question[5].trim());
+
+            System.out.println(question[0]);
+
+            questionTextArea.setText(question[1].trim());
+            button1.setText(question[2].trim());
+            button2.setText(question[3].trim());
+            button3.setText(question[4].trim());
+            button4.setText(question[5].trim());
+            currentAnswer = Integer.parseInt(question[6].trim());
             new Thread(this).start();
         });
     }
@@ -80,13 +84,18 @@ public class QuestionController implements Runnable {
             answers[questionNumber] = false;
         }
 
-        if (questionNumber <= 2) {
+        if (questionNumber <= 1) {
             questionNumber++;
             setLayout();
         } else {
             Data data = new Data();
             data.task = Tasks.SET_SCORE;
             data.roundScore = answers;
+
+
+            System.out.println(Arrays.toString(answers));
+
+
             data.player = clientConnection.getDataHandler().player;
             clientConnection.sendData(data);
         }
@@ -116,7 +125,7 @@ public class QuestionController implements Runnable {
                 return;
             }
         }
-        answers[currentAnswer] = false;
+        setAnswer(0);
     }
 
     private void setCountdownText(String text) {
