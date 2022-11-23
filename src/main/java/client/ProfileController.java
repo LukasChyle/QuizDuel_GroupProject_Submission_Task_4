@@ -1,7 +1,6 @@
 package client;
 
 import data.Data;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
@@ -36,7 +35,7 @@ public class ProfileController {
     }
 
     @FXML
-    protected void onPlayClick(ActionEvent event) throws IOException {
+    protected void onPlayClick() throws IOException {
         setNickname();
         if (nickname != null) {
             ClientConnection connection = new ClientConnection(nickname, avatar);
