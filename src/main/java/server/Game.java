@@ -14,8 +14,8 @@ public class Game {
     private Boolean playerTwoIsReady = false;
     private int round = 0;
     private int currentPlayer = 1;
-    private List<Boolean[]> playerOneScore;
-    private List<Boolean[]> playerTwoScore;
+    private final List<Boolean[]> playerOneScore = new ArrayList<>();
+    private final List<Boolean[]> playerTwoScore = new ArrayList<>();
 
 
     protected void protocol(Data data) { // income data from Client
