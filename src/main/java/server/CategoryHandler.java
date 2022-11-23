@@ -60,10 +60,5 @@ public class CategoryHandler {
         }
         return null;
     }
-
-    public static void main(String[] args) {
-        CategoryHandler c = new CategoryHandler();
-        c.getQuestions("Musik");
-    }
 }
 
