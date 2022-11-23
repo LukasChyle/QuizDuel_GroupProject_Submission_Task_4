@@ -127,7 +127,6 @@ public class ScoreController implements Runnable {
             opponentPortraitCircle.setFill(Color.YELLOW);
             if (lastRound) {
                 finnishLabel.setText("It's a draw!");
-                finnishLabel.setTextFill(Color.YELLOW);
             }
         }
     }

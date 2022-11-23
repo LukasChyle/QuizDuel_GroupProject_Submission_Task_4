@@ -1,15 +1,19 @@
 package server;
 
 import java.io.IOException;
-import java.nio.charset.MalformedInputException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 
 public class CategoryHandler {
+
+    private final int numberOfQuestions;
+
+    protected CategoryHandler(int numberOfQuestions) {
+        this.numberOfQuestions = numberOfQuestions;
+    }
 
     protected String[] categoriesToChoose() {
         return new String[]{"Sport", "Vetenskap", "Musik"};
@@ -30,19 +34,11 @@ public class CategoryHandler {
                 question = questionsArray[i].split("\n");
                 listOfQuestions.add(question);
             }
-            /*
-            // test loop to se how the list is created.
-            for (int j = 0; j < listOfQuestions.size(); j++) {
-                System.out.println("Question " + j);
-                for (String str : listOfQuestions.get(j)) {
-                    System.out.println(str);
-                }
-            }
-            */
+
             int randIndex;
             ArrayList<String[]> finalQuestions = new ArrayList<>();
             List<Integer> validQuestion = new ArrayList<>();
-            while(validQuestion.size() < 3) { // TODO: 3 is a placeholder until properties file.
+            while(validQuestion.size() < numberOfQuestions) {
                 Random r = new Random();
                 randIndex = r.nextInt(1, listOfQuestions.size() - 1); // origin have to be 1.
                 if(!validQuestion.contains(randIndex)){

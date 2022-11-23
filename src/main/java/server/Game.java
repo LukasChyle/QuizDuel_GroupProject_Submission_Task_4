@@ -7,12 +7,18 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Game {
-    private final CategoryHandler c = new CategoryHandler();
+    private final CategoryHandler categoryHandler;
     private ServerConnection p1, p2;
     private Boolean playerOneIsReady = false, playerTwoIsReady = false, gameFinnish = false;
-    private int round = 0, currentPlayer = 1;;
-    private final int totalRounds = 3; // TODO: totalRound = 3 is placeholder until properties file
+    private int round = 0, currentPlayer = 1;
+    private final int totalRounds;
     private final List<Boolean[]> playerOneScore = new ArrayList<>(), playerTwoScore = new ArrayList<>();
+
+    protected Game() {
+        totalRounds = 3; // TODO: placeholder until properties file (number of rounds)
+        int numberOfQuestions = 3; // TODO: placeholder until properties file (number of questions/round).
+        categoryHandler = new CategoryHandler(numberOfQuestions);
+    }
 
     protected void protocol(Data data) { // income data from Client
         switch (data.task) {
@@ -46,7 +52,7 @@ public class Game {
             round++;
             Data data1 = new Data();
             data1.task = Tasks.PICK_CATEGORY;
-            data1.categoriesToChoose = c.categoriesToChoose();
+            data1.categoriesToChoose = categoryHandler.categoriesToChoose();
             Data data2 = new Data();
             data2.task = Tasks.WAIT;
             data2.message = "Opponent is picking a category";
@@ -66,7 +72,7 @@ public class Game {
     }
 
     private void setCategory(Data data) {
-        List<String[]> ar = c.getQuestions(data.message);
+        List<String[]> ar = categoryHandler.getQuestions(data.message);
         Data data1 = new Data();
         data1.task = Tasks.ROUND;
         data1.message = data.message;

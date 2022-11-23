@@ -25,7 +25,7 @@ public class QuestionController implements Runnable {
     private List<String[]> questionsList;
     private ClientConnection clientConnection;
     private int questionNumber, currentAnswer;
-    private final Boolean[] answers = new Boolean[3];
+    private Boolean[] answers;
     private boolean breakTimer;
 
     protected void setScene(List<String[]> questionsList, String category, ClientConnection clientConnection) {
@@ -33,6 +33,7 @@ public class QuestionController implements Runnable {
         this.clientConnection = clientConnection;
         categoryLabel.setText(category);
         questionNumber = 0;
+        answers = new Boolean[questionsList.size()];
         setLayout();
     }
 
@@ -141,7 +142,7 @@ public class QuestionController implements Runnable {
                 delta--;
             }
         }
-        if (questionNumber <= 1) {
+        if (questionNumber < questionsList.size() - 1) {
             questionNumber++;
             setLayout();
         } else {
