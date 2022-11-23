@@ -1,6 +1,7 @@
 package server;
 
 import java.io.IOException;
+import java.nio.charset.MalformedInputException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.ArrayList;
@@ -24,7 +25,7 @@ public class CategoryHandler {
             String[] question;
             List<String[]> listOfQuestions = new ArrayList<>();
 
-            questionsArray = strFile.split("-");
+            questionsArray = strFile.split("¤");
             for (int i = 0; i < questionsArray.length; i++) {
                 question = questionsArray[i].split("\n");
                 listOfQuestions.add(question);
