@@ -14,6 +14,8 @@ public class Game {
     private Boolean playerTwoIsReady = false;
     private int round = 0;
     private int currentPlayer = 1;
+    private List<Boolean[]> playerOneScore;
+    private List<Boolean[]> playerTwoScore;
 
 
     protected void protocol(Data data) { // income data from Client
@@ -79,32 +81,34 @@ public class Game {
     }
 
     private void setScore(Data data) {
-        Data data1 = new Data();
+        Data data2 = new Data();
+        data2.task = Tasks.WAIT;
+        data2.message = "Waiting for opponent to finnish round";
 
         if (data.player == 1) {
-
-            Boolean[] answers;
-            answers = data.roundScore;
-            data1.playerOneScore.add(answers);
+            playerOneScore.add(data.roundScore);
             playerOneIsReady = true;
 
-
         } else if (data.player == 2) {
-            Boolean[] answers;
-            answers = data.roundScore;
-            data1.playerTwoScore.add(answers);
+            playerTwoScore.add(data.roundScore);
             playerTwoIsReady = true;
+
         }
         if (playerOneIsReady && !playerTwoIsReady) {
-            data1.task = Tasks.WAIT;
-            p1.sendData(data1);
+            p1.sendData(data2);
         } else if (playerTwoIsReady && !playerOneIsReady) {
-            data1.task = Tasks.WAIT;
-            p2.sendData(data1);
-        } else if (playerOneIsReady && playerTwoIsReady) {
+            p2.sendData(data2);
+        }
+        if (playerOneIsReady && playerTwoIsReady) {
+            Data data1 = new Data();
+
             data1.task = Tasks.SET_SCORE;
+            data1.playerOneScore = playerOneScore;
+            data1.playerTwoScore = playerTwoScore;
             p1.sendData(data1);
             p2.sendData(data1);
+            playerOneIsReady=false;
+            playerTwoIsReady=false;
         }
     }
 
