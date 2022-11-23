@@ -60,8 +60,17 @@ public class DataHandler {
         currentNode = waitCon.getNode();
     }
 
-    private void setScore(Data data) {
-        // TODO: Create scoreboard scene
+    private void setScore(Data data) throws IOException {
+
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("scoreboardScene.fxml"));
+        Parent root = loader.load();
+        ScoreController scoreCon = loader.getController();
+        scoreCon.setScore(connection, ownNickname, opponentNickname, ownAvatar, opponentAvatar, data.playerOneScore, data.playerTwoScore);
+        startNewScene(root);
+        currentNode = scoreCon.getNode();
+
+
+
     }
 
 
