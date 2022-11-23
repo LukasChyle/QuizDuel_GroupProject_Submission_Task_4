@@ -54,7 +54,7 @@ public class CategoryHandler {
                     finalQuestions.add(listOfQuestions.get(randIndex));
                 }
             }
-            System.out.println(validQuestion.size());
+
             return finalQuestions;
         } catch (IOException e) {
             e.printStackTrace();
