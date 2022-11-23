@@ -74,7 +74,7 @@ public class ScoreController {
         for (int i = 0; i < thisScoreList.size(); i++) {
             roundLabels[i].setVisible(true);
             Boolean[] roundThis = thisScoreList.get(i);
-            Boolean[] roundOpponent = thisScoreList.get(i);
+            Boolean[] roundOpponent = opponentScoreList.get(i);
             for (int j = 0; j < thisScoreList.get(i).length; j++) {
                 opponentCircles[i][j].setVisible(true);
                 thisCircles[i][j].setVisible(true);
