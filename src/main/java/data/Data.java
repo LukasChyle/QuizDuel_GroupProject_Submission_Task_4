@@ -15,5 +15,5 @@ public class Data implements Serializable {
     public Boolean[] roundScore;
     public List<Boolean[]> playerOneScore;
     public List<Boolean[]> playerTwoScore;
-    public int round;
+    public boolean lastRound;
 }

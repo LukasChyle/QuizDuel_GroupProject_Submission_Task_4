@@ -7,6 +7,7 @@ import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.ProgressBar;
 import javafx.scene.control.TextArea;
 
 import java.util.List;
@@ -14,9 +15,11 @@ import java.util.List;
 public class QuestionController implements Runnable {
 
     @FXML
+    private ProgressBar progressBar;
+    @FXML
     private TextArea questionTextArea;
     @FXML
-    private Label countdownLabel, categoryLabel;
+    private Label categoryLabel;
     @FXML
     private Button button1, button2, button3, button4, closeButton;
     private List<String[]> questionsList;
@@ -158,30 +161,25 @@ public class QuestionController implements Runnable {
         long currentTime;
 
         breakTimer = false;
-        setCountdownText("Time Left: 15");
-        for (int i = 15; i > 0; ) {
+        for (double i = 1; i > 0; ) {
             currentTime = System.nanoTime();
             delta += (currentTime - lastTime) / drawInterval;
             lastTime = currentTime;
 
-            if (delta >= 1) {
-                i--;
-                setCountdownText("Time Left: " + i);
-                delta--;
+            if (delta >= 0.01) {
+                i -= 0.00066;
+                double j = i;
+                Platform.runLater(() -> {
+                    progressBar.setProgress(j);
+                });
+                delta -= 0.01;
             }
             if (breakTimer) {
                 break;
             }
         }
         if (!breakTimer) {
-            setCountdownText("Time is out");
             setAnswer(0, null);
         }
-    }
-
-    private void setCountdownText(String text) {
-        Platform.runLater(() -> {
-            countdownLabel.setText(text);
-        });
     }
 }

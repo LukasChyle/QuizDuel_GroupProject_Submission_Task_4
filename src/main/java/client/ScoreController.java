@@ -1,6 +1,8 @@
 package client;
 
-import javafx.event.ActionEvent;
+import data.Data;
+import data.Tasks;
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
@@ -14,8 +16,7 @@ import javafx.scene.shape.Circle;
 import java.io.File;
 import java.util.List;
 
-
-public class ScoreController {
+public class ScoreController implements Runnable {
     @FXML
     private Circle thisPortraitCircle, opponentPortraitCircle;
     @FXML
@@ -25,7 +26,8 @@ public class ScoreController {
     @FXML
     private Button closeButton;
     @FXML
-    private Label thisNickname, opponentNickname, thisScore, opponentScore, scoreLabel1, scoreLabel2, scoreLabel3, scoreLabel4, scoreLabel5, scoreLabel6;
+    private Label thisNickname, opponentNickname, thisScore, opponentScore,
+            scoreLabel1, scoreLabel2, scoreLabel3, scoreLabel4, scoreLabel5, scoreLabel6, finnishLabel;
     @FXML
     private Circle Tq1r1, Tq2r1, Tq3r1, Tq4r1, Tq5r1, Tq1r2, Tq2r2, Tq3r2, Tq4r2, Tq5r2,
             Tq1r3, Tq2r3, Tq3r3, Tq4r3, Tq5r3, Tq1r4, Tq2r4, Tq3r4, Tq4r4, Tq5r4,
@@ -37,13 +39,15 @@ public class ScoreController {
     private Label[] roundLabels;
     private int thisScoreCounter, opponentScoreCounter;
     private ClientConnection connection;
-    List<Boolean[]> thisScoreList, opponentScoreList;
+    private List<Boolean[]> thisScoreList, opponentScoreList;
+    private boolean lastRound;
 
     protected void setScene(ClientConnection connection, String thisNickname, String opponentNickname, int thisAvatar,
-                            int opponentAvatar, List<Boolean[]> playerOneScore, List<Boolean[]> playerTwoScore) {
+                            int opponentAvatar, List<Boolean[]> playerOneScore, List<Boolean[]> playerTwoScore, boolean lastRound) {
         this.connection = connection;
         this.thisNickname.setText(thisNickname);
         this.opponentNickname.setText(opponentNickname);
+        this.lastRound = lastRound;
         if (connection.getDataHandler().player == 1) {
             thisScoreList = playerOneScore;
             opponentScoreList = playerTwoScore;
@@ -60,14 +64,22 @@ public class ScoreController {
 
         thisScoreCounter = 0;
         opponentScoreCounter = 0;
-        roundLabels = new Label[] {scoreLabel1, scoreLabel2, scoreLabel3, scoreLabel4, scoreLabel5, scoreLabel6};
-        thisCircles = new Circle[][] {{Tq1r1, Tq2r1, Tq3r1, Tq4r1, Tq5r1}, {Tq1r2, Tq2r2, Tq3r2, Tq4r2, Tq5r2},
+        roundLabels = new Label[]{scoreLabel1, scoreLabel2, scoreLabel3, scoreLabel4, scoreLabel5, scoreLabel6};
+        thisCircles = new Circle[][]{{Tq1r1, Tq2r1, Tq3r1, Tq4r1, Tq5r1}, {Tq1r2, Tq2r2, Tq3r2, Tq4r2, Tq5r2},
                 {Tq1r3, Tq2r3, Tq3r3, Tq4r3, Tq5r3}, {Tq1r4, Tq2r4, Tq3r4, Tq4r4, Tq5r4},
                 {Tq1r5, Tq2r5, Tq3r5, Tq4r5, Tq5r5}, {Tq1r6, Tq2r6, Tq3r6, Tq4r6, Tq5r6,}};
-        opponentCircles = new Circle[][] {{Oq1r1, Oq2r1, Oq3r1, Oq4r1, Oq5r1}, {Oq1r2, Oq2r2, Oq3r2, Oq4r2, Oq5r2},
+        opponentCircles = new Circle[][]{{Oq1r1, Oq2r1, Oq3r1, Oq4r1, Oq5r1}, {Oq1r2, Oq2r2, Oq3r2, Oq4r2, Oq5r2},
                 {Oq1r3, Oq2r3, Oq3r3, Oq4r3, Oq5r3}, {Oq1r4, Oq2r4, Oq3r4, Oq4r4, Oq5r4},
                 {Oq1r5, Oq2r5, Oq3r5, Oq4r5, Oq5r5}, {Oq1r6, Oq2r6, Oq3r6, Oq4r6, Oq5r6}};
         setScoreBoard();
+        if (!lastRound) {
+            new Thread(this).start();
+        } else {
+            closeButton.setText("Exit");
+            progressBar.setVisible(false);
+            finnishLabel.setVisible(true);
+        }
+
     }
 
     private void setScoreBoard() {
@@ -99,12 +111,24 @@ public class ScoreController {
         if (thisScoreCounter < opponentScoreCounter) {
             thisPortraitCircle.setFill(Color.RED);
             opponentPortraitCircle.setFill(Color.GREEN);
+            if (lastRound) {
+                finnishLabel.setText("You lost!");
+                finnishLabel.setTextFill(Color.RED);
+            }
         } else if (thisScoreCounter > opponentScoreCounter) {
             thisPortraitCircle.setFill(Color.GREEN);
             opponentPortraitCircle.setFill(Color.RED);
+            if (lastRound) {
+                finnishLabel.setText("You won!");
+                finnishLabel.setTextFill(Color.GREEN);
+            }
         } else {
             thisPortraitCircle.setFill(Color.YELLOW);
             opponentPortraitCircle.setFill(Color.YELLOW);
+            if (lastRound) {
+                finnishLabel.setText("It's a draw!");
+                finnishLabel.setTextFill(Color.YELLOW);
+            }
         }
     }
 
@@ -112,10 +136,35 @@ public class ScoreController {
         return progressBar;
     }
 
-    public void onCloseClick(ActionEvent event) {
+    public void onCloseClick() {
         System.exit(0);
+    }
+
+    @Override
+    public void run() {
+        double drawInterval = 1_000_000_000;
+        double delta = 0;
+        long lastTime = System.nanoTime();
+        long currentTime;
+
+        for (double i = 1; i > 0; ) {
+            currentTime = System.nanoTime();
+            delta += (currentTime - lastTime) / drawInterval;
+            lastTime = currentTime;
+
+            if (delta >= 0.01) {
+                i -= 0.001;
+                double j = i;
+                Platform.runLater(() -> {
+                    progressBar.setProgress(j);
+                });
+                delta -= 0.01;
+            }
+        }
+        Data data = new Data();
+        data.task = Tasks.READY_ROUND;
+        data.player = connection.getDataHandler().player;
+        connection.sendData(data);
     }
 }
 
-// Data boolean: lastRound, if to show progressbar or label who won. and if button show surrender or exit.
-// make progressbar and send to server when ready.

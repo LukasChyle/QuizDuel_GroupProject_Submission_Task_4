@@ -42,7 +42,7 @@ public class CategoryHandler {
             int randIndex;
             ArrayList<String[]> finalQuestions = new ArrayList<>();
             List<Integer> validQuestion = new ArrayList<>();
-            while(validQuestion.size() < 3) {
+            while(validQuestion.size() < 3) { // TODO: 3 is a placeholder until properties file.
                 Random r = new Random();
                 randIndex = r.nextInt(1, listOfQuestions.size() - 1); // origin have to be 1.
                 if(!validQuestion.contains(randIndex)){

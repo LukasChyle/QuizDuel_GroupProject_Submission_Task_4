@@ -7,7 +7,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
+import javafx.scene.control.ProgressBar;
 
 import java.util.Random;
 
@@ -16,7 +16,7 @@ public class CategoryController implements Runnable {
     @FXML
     private Button category1Button, category2Button, category3Button;
     @FXML
-    private Label countdownField;
+    private ProgressBar progressBar;
     private ClientConnection clientConnection;
     private int numberOfCategories;
     private boolean breakTimer;
@@ -68,7 +68,7 @@ public class CategoryController implements Runnable {
     }
 
     protected Node getNode() {
-        return countdownField;
+        return progressBar;
     }
 
     @Override // Timer that will pick random category if player don't chose.
@@ -79,19 +79,21 @@ public class CategoryController implements Runnable {
         long currentTime;
 
         breakTimer = false;
-        setCountdownText("10");
-        for (int i = 10; i > 0; ) {
+        for (double i = 1; i > 0; ) {
             currentTime = System.nanoTime();
             delta += (currentTime - lastTime) / drawInterval;
             lastTime = currentTime;
 
-            if (delta >= 1) {
-                i--;
-                setCountdownText(String.valueOf(i));
-                delta--;
-            }
             if (breakTimer) {
                 return;
+            }
+            if (delta >= 0.01) {
+                i -= 0.001;
+                double j = i;
+                Platform.runLater(() -> {
+                    progressBar.setProgress(j);
+                });
+                delta -= 0.01;
             }
         }
         Random random = new Random();
@@ -101,11 +103,5 @@ public class CategoryController implements Runnable {
             case 1 -> onButton2Click();
             case 2 -> onButton3Click();
         }
-    }
-
-    private void setCountdownText(String text) {
-        Platform.runLater(() -> {
-            countdownField.setText(text);
-        });
     }
 }

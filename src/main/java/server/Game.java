@@ -8,22 +8,17 @@ import java.util.List;
 
 public class Game {
     private final CategoryHandler c = new CategoryHandler();
-
     private ServerConnection p1, p2;
-    private Boolean playerOneIsReady = false;
-    private Boolean playerTwoIsReady = false;
-    private int round = 0;
-    private int currentPlayer = 1;
-    private final List<Boolean[]> playerOneScore = new ArrayList<>();
-    private final List<Boolean[]> playerTwoScore = new ArrayList<>();
-
+    private Boolean playerOneIsReady = false, playerTwoIsReady = false, gameFinnish = false;
+    private int round = 0, currentPlayer = 1;;
+    private final int totalRounds = 3; // TODO: totalRound = 3 is placeholder until properties file
+    private final List<Boolean[]> playerOneScore = new ArrayList<>(), playerTwoScore = new ArrayList<>();
 
     protected void protocol(Data data) { // income data from Client
         switch (data.task) {
             case PICK_CATEGORY -> setCategory(data);
             case SET_SCORE -> setScore(data);
-            case OPPONENT_INFO -> setPlayer(data);  //Klar
-            case FINNISH -> endGame(data);
+            case OPPONENT_INFO -> setPlayer(data);
             case READY_ROUND -> startRound(data);
         }
     }
@@ -83,38 +78,37 @@ public class Game {
     private void setScore(Data data) {
         Data data2 = new Data();
         data2.task = Tasks.WAIT;
-        data2.message = "Waiting for opponent to finnish round";
+        data2.message = "Waiting for opponent to finnish";
 
         if (data.player == 1) {
             playerOneScore.add(data.roundScore);
             playerOneIsReady = true;
-
         } else if (data.player == 2) {
             playerTwoScore.add(data.roundScore);
             playerTwoIsReady = true;
-
         }
+
         if (playerOneIsReady && !playerTwoIsReady) {
             p1.sendData(data2);
         } else if (playerTwoIsReady && !playerOneIsReady) {
             p2.sendData(data2);
         }
+
         if (playerOneIsReady && playerTwoIsReady) {
             Data data1 = new Data();
-
             data1.task = Tasks.SET_SCORE;
+            if (round < totalRounds) {
+                data1.lastRound = false;
+            } else {
+                data1.lastRound = true;
+                gameFinnish = true;
+            }
             data1.playerOneScore = playerOneScore;
             data1.playerTwoScore = playerTwoScore;
             p1.sendData(data1);
             p2.sendData(data1);
-            playerOneIsReady=false;
-            playerTwoIsReady=false;
+            playerOneIsReady = false;
+            playerTwoIsReady = false;
         }
-    }
-
-    //Tar in bol med 3 alternativ // wait for both roundscore //
-    //if player waiting - send to wait scene
-    private void endGame(Data data) {
-
     }
 }

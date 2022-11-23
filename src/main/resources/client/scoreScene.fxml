@@ -176,4 +176,9 @@
       <Circle fx:id="Oq4r6" fill="WHITE" radius="6.0" stroke="BLACK" strokeType="INSIDE" visible="false" GridPane.columnIndex="3" GridPane.rowIndex="5" />
       <Circle fx:id="Oq5r6" fill="WHITE" radius="6.0" stroke="BLACK" strokeType="INSIDE" visible="false" GridPane.columnIndex="4" GridPane.rowIndex="5" />
    </GridPane>
+   <Label fx:id="finnishLabel" alignment="CENTER" layoutX="100.0" layoutY="15.0" prefWidth="150.0" text="Finnish Label" underline="true" visible="false">
+      <font>
+         <Font name="System Bold" size="24.0" />
+      </font>
+   </Label>
 </AnchorPane>
