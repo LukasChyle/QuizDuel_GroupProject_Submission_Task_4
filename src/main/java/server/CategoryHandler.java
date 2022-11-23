@@ -53,11 +53,17 @@ public class CategoryHandler {
                     finalQuestions.add(listOfQuestions.get(randIndex));
                 }
             }
+            System.out.println(validQuestion.size());
             return finalQuestions;
         } catch (IOException e) {
             e.printStackTrace();
         }
         return null;
+    }
+
+    public static void main(String[] args) {
+        CategoryHandler c = new CategoryHandler();
+        c.getQuestions("Musik");
     }
 }
 
