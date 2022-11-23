@@ -80,7 +80,6 @@ public class Game {
     private void setScore(Data data) {  //Tar in bol med 3 alternativ // wait for both roundscore //
         //if player waiting - send to wait scene
     }
-
     private void endGame(Data data) {
 
     }

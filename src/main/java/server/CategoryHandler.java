@@ -42,10 +42,14 @@ public class CategoryHandler {
 
             int randIndex;
             ArrayList<String[]> finalQuestions = new ArrayList<>();
-            for (int i = 0; i < 3; i++) {
+            List<Integer> validQuestion = new ArrayList<>();
+            while(validQuestion.size() < 3) {
                 Random r = new Random();
                 randIndex = r.nextInt(1, listOfQuestions.size() - 1); // origin have to be 1.
-                finalQuestions.add(listOfQuestions.get(randIndex));
+                if(!validQuestion.contains(randIndex)){
+                    validQuestion.add(randIndex);
+                    finalQuestions.add(listOfQuestions.get(randIndex));
+                }
             }
             return finalQuestions;
         } catch (IOException e) {

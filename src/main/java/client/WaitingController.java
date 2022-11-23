@@ -21,7 +21,6 @@ public class WaitingController {
     public void onCloseClick(ActionEvent event) {
         System.exit(0); // Change this to controlled disconnection later
     }
-
     protected Node getNode() {
         return messageField;
     }

@@ -64,6 +64,7 @@ public class DataHandler {
         // TODO: Create scoreboard scene
     }
 
+
     // makes the client go to category scene to pick a category from a selection.
     private void setCategory(Data data) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("categoryScene.fxml"));
