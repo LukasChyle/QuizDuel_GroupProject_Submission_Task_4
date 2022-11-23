@@ -30,7 +30,6 @@ public class Game {
         this.p2 = p2;
     }
 
-
     private void setPlayer(Data data) {
         if (data.player == 1) {
             p2.sendData(data);

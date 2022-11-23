@@ -30,7 +30,7 @@ public class CategoryHandler {
                 listOfQuestions.add(question);
             }
 
-            /*
+
             // test loop to se how the list is created.
             for (int j = 0; j < listOfQuestions.size(); j++) {
                 System.out.println("Question " + j);
@@ -38,7 +38,7 @@ public class CategoryHandler {
                     System.out.println(str);
                 }
             }
-            */
+
 
             int randIndex;
             ArrayList<String[]> finalQuestions = new ArrayList<>();
