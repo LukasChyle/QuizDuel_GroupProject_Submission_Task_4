@@ -57,6 +57,7 @@ public class ScoreController {
         file = new File("src/main/resources/client/avatars/avatar-" + opponentAvatar + ".png");
         image = new Image(file.toURI().toString());
         this.portraitOpponent.setImage(image);
+
         thisScoreCounter = 0;
         opponentScoreCounter = 0;
         roundLabels = new Label[] {scoreLabel1, scoreLabel2, scoreLabel3, scoreLabel4, scoreLabel5, scoreLabel6};
@@ -66,7 +67,6 @@ public class ScoreController {
         opponentCircles = new Circle[][] {{Oq1r1, Oq2r1, Oq3r1, Oq4r1, Oq5r1}, {Oq1r2, Oq2r2, Oq3r2, Oq4r2, Oq5r2},
                 {Oq1r3, Oq2r3, Oq3r3, Oq4r3, Oq5r3}, {Oq1r4, Oq2r4, Oq3r4, Oq4r4, Oq5r4},
                 {Oq1r5, Oq2r5, Oq3r5, Oq4r5, Oq5r5}, {Oq1r6, Oq2r6, Oq3r6, Oq4r6, Oq5r6}};
-
         setScoreBoard();
     }
 
@@ -75,9 +75,11 @@ public class ScoreController {
             roundLabels[i].setVisible(true);
             Boolean[] roundThis = thisScoreList.get(i);
             Boolean[] roundOpponent = opponentScoreList.get(i);
-            for (int j = 0; j < thisScoreList.get(i).length; j++) {
+            for (int j = 0; j < 5; j++) {
                 opponentCircles[i][j].setVisible(true);
                 thisCircles[i][j].setVisible(true);
+            }
+            for (int j = 0; j < thisScoreList.get(i).length; j++) {
                 if (roundThis[j]) {
                     thisCircles[i][j].setFill(Color.GREEN);
                     thisScoreCounter++;
@@ -109,7 +111,11 @@ public class ScoreController {
     protected Node getNode() {
         return progressBar;
     }
+
     public void onCloseClick(ActionEvent event) {
         System.exit(0);
     }
 }
+
+// Data boolean: lastRound, if to show progressbar or label who won. and if button show surrender or exit.
+// make progressbar and send to server when ready.

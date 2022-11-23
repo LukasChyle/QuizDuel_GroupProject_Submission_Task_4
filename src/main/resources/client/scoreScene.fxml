@@ -18,10 +18,22 @@
    <ImageView fx:id="portraitThis" fitHeight="45.0" fitWidth="45.0" layoutX="73.0" layoutY="58.0" pickOnBounds="true" preserveRatio="true" />
    <ImageView fx:id="portraitOpponent" fitHeight="45.0" fitWidth="45.0" layoutX="232.0" layoutY="58.0" pickOnBounds="true" preserveRatio="true" />
    <Button fx:id="closeButton" layoutX="125.0" layoutY="450.0" mnemonicParsing="false" onAction="#onCloseClick" prefHeight="40.0" prefWidth="100.0" text="Surrender" />
-   <Label fx:id="thisNickname" alignment="CENTER" layoutX="20.0" layoutY="110.0" prefHeight="20.0" prefWidth="150.0" text="Nickname" />
-   <Label fx:id="opponentNickname" alignment="CENTER" layoutX="179.0" layoutY="110.0" prefHeight="20.0" prefWidth="150.0" text="Nickname" />
-   <Label fx:id="thisScore" alignment="CENTER" layoutX="19.0" layoutY="130.0" prefHeight="20.0" prefWidth="150.0" text="Score: 0" />
-   <Label fx:id="opponentScore" alignment="CENTER" layoutX="179.0" layoutY="130.0" prefHeight="20.0" prefWidth="150.0" text="Score: 0" />
+   <Label fx:id="thisNickname" alignment="CENTER" layoutX="20.0" layoutY="110.0" prefHeight="20.0" prefWidth="150.0" text="Nickname">
+      <font>
+         <Font name="System Bold" size="12.0" />
+      </font></Label>
+   <Label fx:id="opponentNickname" alignment="CENTER" layoutX="179.0" layoutY="110.0" prefHeight="20.0" prefWidth="150.0" text="Nickname">
+      <font>
+         <Font name="System Bold" size="12.0" />
+      </font></Label>
+   <Label fx:id="thisScore" alignment="CENTER" layoutX="19.0" layoutY="130.0" prefHeight="20.0" prefWidth="150.0" text="Score: 0">
+      <font>
+         <Font name="System Bold" size="12.0" />
+      </font></Label>
+   <Label fx:id="opponentScore" alignment="CENTER" layoutX="179.0" layoutY="130.0" prefHeight="20.0" prefWidth="150.0" text="Score: 0">
+      <font>
+         <Font name="System Bold" size="12.0" />
+      </font></Label>
    <GridPane layoutX="44.0" layoutY="150.0" prefHeight="295.0" prefWidth="100.0">
       <columnConstraints>
          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -38,36 +50,36 @@
          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
       </rowConstraints>
-      <Circle fx:id="Tq1r1" fill="WHITE" radius="6.0" stroke="BLACK" strokeType="INSIDE" />
-      <Circle fx:id="Tq2r1" fill="WHITE" radius="6.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="1" />
-      <Circle fx:id="Tq3r1" fill="WHITE" radius="6.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="2" />
-      <Circle fx:id="Tq4r1" fill="WHITE" radius="6.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="3" />
-      <Circle fx:id="Tq5r1" fill="WHITE" radius="6.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="4" />
-      <Circle fx:id="Tq1r2" fill="WHITE" radius="6.0" stroke="BLACK" strokeType="INSIDE" GridPane.rowIndex="1" />
-      <Circle fx:id="Tq2r2" fill="WHITE" radius="6.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-      <Circle fx:id="Tq3r2" fill="WHITE" radius="6.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="2" GridPane.rowIndex="1" />
-      <Circle fx:id="Tq4r2" fill="WHITE" radius="6.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="3" GridPane.rowIndex="1" />
-      <Circle fx:id="Tq5r2" fill="WHITE" radius="6.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="4" GridPane.rowIndex="1" />
-      <Circle fx:id="Tq1r3" fill="WHITE" radius="6.0" stroke="BLACK" strokeType="INSIDE" GridPane.rowIndex="2" />
-      <Circle fx:id="Tq2r3" fill="WHITE" radius="6.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-      <Circle fx:id="Tq3r3" fill="WHITE" radius="6.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="2" GridPane.rowIndex="2" />
-      <Circle fx:id="Tq4r3" fill="WHITE" radius="6.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="3" GridPane.rowIndex="2" />
-      <Circle fx:id="Tq5r3" fill="WHITE" radius="6.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="4" GridPane.rowIndex="2" />
-      <Circle fx:id="Tq1r4" fill="WHITE" radius="6.0" stroke="BLACK" strokeType="INSIDE" GridPane.rowIndex="3" />
-      <Circle fx:id="Tq2r4" fill="WHITE" radius="6.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-      <Circle fx:id="Tq3r4" fill="WHITE" radius="6.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="2" GridPane.rowIndex="3" />
-      <Circle fx:id="Tq4r4" fill="WHITE" radius="6.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="3" GridPane.rowIndex="3" />
-      <Circle fx:id="Tq5r4" fill="WHITE" radius="6.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="4" GridPane.rowIndex="3" />
-      <Circle fx:id="Tq1r5" fill="WHITE" radius="6.0" stroke="BLACK" strokeType="INSIDE" GridPane.rowIndex="4" />
-      <Circle fx:id="Tq2r5" fill="WHITE" radius="6.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-      <Circle fx:id="Tq3r5" fill="WHITE" radius="6.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="2" GridPane.rowIndex="4" />
-      <Circle fx:id="Tq4r5" fill="WHITE" radius="6.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="3" GridPane.rowIndex="4" />
-      <Circle fx:id="Tq5r5" fill="WHITE" radius="6.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="4" GridPane.rowIndex="4" />
-      <Circle fx:id="Tq1r6" fill="WHITE" radius="6.0" stroke="BLACK" strokeType="INSIDE" GridPane.rowIndex="5" />
-      <Circle fx:id="Tq2r6" fill="WHITE" radius="6.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="1" GridPane.rowIndex="5" />
-      <Circle fx:id="Tq3r6" fill="WHITE" radius="6.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="2" GridPane.rowIndex="5" />
-      <Circle fx:id="Tq4r6" fill="WHITE" radius="6.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="3" GridPane.rowIndex="5" />
-      <Circle fx:id="Tq5r6" fill="WHITE" radius="6.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="4" GridPane.rowIndex="5" />
+      <Circle fx:id="Tq1r1" fill="WHITE" radius="6.0" stroke="BLACK" strokeType="INSIDE" visible="false" />
+      <Circle fx:id="Tq2r1" fill="WHITE" radius="6.0" stroke="BLACK" strokeType="INSIDE" visible="false" GridPane.columnIndex="1" />
+      <Circle fx:id="Tq3r1" fill="WHITE" radius="6.0" stroke="BLACK" strokeType="INSIDE" visible="false" GridPane.columnIndex="2" />
+      <Circle fx:id="Tq4r1" fill="WHITE" radius="6.0" stroke="BLACK" strokeType="INSIDE" visible="false" GridPane.columnIndex="3" />
+      <Circle fx:id="Tq5r1" fill="WHITE" radius="6.0" stroke="BLACK" strokeType="INSIDE" visible="false" GridPane.columnIndex="4" />
+      <Circle fx:id="Tq1r2" fill="WHITE" radius="6.0" stroke="BLACK" strokeType="INSIDE" visible="false" GridPane.rowIndex="1" />
+      <Circle fx:id="Tq2r2" fill="WHITE" radius="6.0" stroke="BLACK" strokeType="INSIDE" visible="false" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+      <Circle fx:id="Tq3r2" fill="WHITE" radius="6.0" stroke="BLACK" strokeType="INSIDE" visible="false" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+      <Circle fx:id="Tq4r2" fill="WHITE" radius="6.0" stroke="BLACK" strokeType="INSIDE" visible="false" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+      <Circle fx:id="Tq5r2" fill="WHITE" radius="6.0" stroke="BLACK" strokeType="INSIDE" visible="false" GridPane.columnIndex="4" GridPane.rowIndex="1" />
+      <Circle fx:id="Tq1r3" fill="WHITE" radius="6.0" stroke="BLACK" strokeType="INSIDE" visible="false" GridPane.rowIndex="2" />
+      <Circle fx:id="Tq2r3" fill="WHITE" radius="6.0" stroke="BLACK" strokeType="INSIDE" visible="false" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+      <Circle fx:id="Tq3r3" fill="WHITE" radius="6.0" stroke="BLACK" strokeType="INSIDE" visible="false" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+      <Circle fx:id="Tq4r3" fill="WHITE" radius="6.0" stroke="BLACK" strokeType="INSIDE" visible="false" GridPane.columnIndex="3" GridPane.rowIndex="2" />
+      <Circle fx:id="Tq5r3" fill="WHITE" radius="6.0" stroke="BLACK" strokeType="INSIDE" visible="false" GridPane.columnIndex="4" GridPane.rowIndex="2" />
+      <Circle fx:id="Tq1r4" fill="WHITE" radius="6.0" stroke="BLACK" strokeType="INSIDE" visible="false" GridPane.rowIndex="3" />
+      <Circle fx:id="Tq2r4" fill="WHITE" radius="6.0" stroke="BLACK" strokeType="INSIDE" visible="false" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+      <Circle fx:id="Tq3r4" fill="WHITE" radius="6.0" stroke="BLACK" strokeType="INSIDE" visible="false" GridPane.columnIndex="2" GridPane.rowIndex="3" />
+      <Circle fx:id="Tq4r4" fill="WHITE" radius="6.0" stroke="BLACK" strokeType="INSIDE" visible="false" GridPane.columnIndex="3" GridPane.rowIndex="3" />
+      <Circle fx:id="Tq5r4" fill="WHITE" radius="6.0" stroke="BLACK" strokeType="INSIDE" visible="false" GridPane.columnIndex="4" GridPane.rowIndex="3" />
+      <Circle fx:id="Tq1r5" fill="WHITE" radius="6.0" stroke="BLACK" strokeType="INSIDE" visible="false" GridPane.rowIndex="4" />
+      <Circle fx:id="Tq2r5" fill="WHITE" radius="6.0" stroke="BLACK" strokeType="INSIDE" visible="false" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+      <Circle fx:id="Tq3r5" fill="WHITE" radius="6.0" stroke="BLACK" strokeType="INSIDE" visible="false" GridPane.columnIndex="2" GridPane.rowIndex="4" />
+      <Circle fx:id="Tq4r5" fill="WHITE" radius="6.0" stroke="BLACK" strokeType="INSIDE" visible="false" GridPane.columnIndex="3" GridPane.rowIndex="4" />
+      <Circle fx:id="Tq5r5" fill="WHITE" radius="6.0" stroke="BLACK" strokeType="INSIDE" visible="false" GridPane.columnIndex="4" GridPane.rowIndex="4" />
+      <Circle fx:id="Tq1r6" fill="WHITE" radius="6.0" stroke="BLACK" strokeType="INSIDE" visible="false" GridPane.rowIndex="5" />
+      <Circle fx:id="Tq2r6" fill="WHITE" radius="6.0" stroke="BLACK" strokeType="INSIDE" visible="false" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+      <Circle fx:id="Tq3r6" fill="WHITE" radius="6.0" stroke="BLACK" strokeType="INSIDE" visible="false" GridPane.columnIndex="2" GridPane.rowIndex="5" />
+      <Circle fx:id="Tq4r6" fill="WHITE" radius="6.0" stroke="BLACK" strokeType="INSIDE" visible="false" GridPane.columnIndex="3" GridPane.rowIndex="5" />
+      <Circle fx:id="Tq5r6" fill="WHITE" radius="6.0" stroke="BLACK" strokeType="INSIDE" visible="false" GridPane.columnIndex="4" GridPane.rowIndex="5" />
    </GridPane>
    <GridPane layoutX="155.0" layoutY="150.0" prefHeight="295.0" prefWidth="40.0">
       <columnConstraints>
@@ -81,32 +93,32 @@
          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
       </rowConstraints>
-      <Label fx:id="scoreLabel1" alignment="CENTER" prefHeight="44.0" prefWidth="28.0" text="1">
+      <Label fx:id="scoreLabel1" alignment="CENTER" prefHeight="44.0" prefWidth="28.0" text="1" visible="false">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>
       </Label>
-      <Label fx:id="scoreLabel2" alignment="CENTER" prefHeight="44.0" prefWidth="28.0" text="2" GridPane.rowIndex="1">
+      <Label fx:id="scoreLabel2" alignment="CENTER" prefHeight="44.0" prefWidth="28.0" text="2" visible="false" GridPane.rowIndex="1">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>
       </Label>
-      <Label fx:id="scoreLabel3" alignment="CENTER" prefHeight="44.0" prefWidth="28.0" text="3" GridPane.rowIndex="2">
+      <Label fx:id="scoreLabel3" alignment="CENTER" prefHeight="44.0" prefWidth="28.0" text="3" visible="false" GridPane.rowIndex="2">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>
       </Label>
-      <Label fx:id="scoreLabel4" alignment="CENTER" prefHeight="44.0" prefWidth="28.0" text="4" GridPane.rowIndex="3">
+      <Label fx:id="scoreLabel4" alignment="CENTER" prefHeight="44.0" prefWidth="28.0" text="4" visible="false" GridPane.rowIndex="3">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>
       </Label>
-      <Label fx:id="scoreLabel5" alignment="CENTER" prefHeight="44.0" prefWidth="28.0" text="5" GridPane.rowIndex="4">
+      <Label fx:id="scoreLabel5" alignment="CENTER" prefHeight="44.0" prefWidth="28.0" text="5" visible="false" GridPane.rowIndex="4">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>
       </Label>
-      <Label fx:id="scoreLabel6" alignment="CENTER" prefHeight="44.0" prefWidth="28.0" text="6" GridPane.rowIndex="5">
+      <Label fx:id="scoreLabel6" alignment="CENTER" prefHeight="44.0" prefWidth="28.0" text="6" visible="false" GridPane.rowIndex="5">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>
@@ -133,35 +145,35 @@
          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
       </rowConstraints>
-      <Circle fx:id="Oq1r1" fill="WHITE" radius="6.0" stroke="BLACK" strokeType="INSIDE" />
-      <Circle fx:id="Oq2r1" fill="WHITE" radius="6.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="1" />
-      <Circle fx:id="Oq3r1" fill="WHITE" radius="6.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="2" />
-      <Circle fx:id="Oq4r1" fill="WHITE" radius="6.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="3" />
-      <Circle fx:id="Oq5r1" fill="WHITE" radius="6.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="4" />
-      <Circle fx:id="Oq1r2" fill="WHITE" radius="6.0" stroke="BLACK" strokeType="INSIDE" GridPane.rowIndex="1" />
-      <Circle fx:id="Oq2r2" fill="WHITE" radius="6.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-      <Circle fx:id="Oq3r2" fill="WHITE" radius="6.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="2" GridPane.rowIndex="1" />
-      <Circle fx:id="Oq4r2" fill="WHITE" radius="6.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="3" GridPane.rowIndex="1" />
-      <Circle fx:id="Oq5r2" fill="WHITE" radius="6.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="4" GridPane.rowIndex="1" />
-      <Circle fx:id="Oq1r3" fill="WHITE" radius="6.0" stroke="BLACK" strokeType="INSIDE" GridPane.rowIndex="2" />
-      <Circle fx:id="Oq2r3" fill="WHITE" radius="6.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-      <Circle fx:id="Oq3r3" fill="WHITE" radius="6.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="2" GridPane.rowIndex="2" />
-      <Circle fx:id="Oq4r3" fill="WHITE" radius="6.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="3" GridPane.rowIndex="2" />
-      <Circle fx:id="Oq5r3" fill="WHITE" radius="6.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="4" GridPane.rowIndex="2" />
-      <Circle fx:id="Oq1r4" fill="WHITE" radius="6.0" stroke="BLACK" strokeType="INSIDE" GridPane.rowIndex="3" />
-      <Circle fx:id="Oq2r4" fill="WHITE" radius="6.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-      <Circle fx:id="Oq3r4" fill="WHITE" radius="6.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="2" GridPane.rowIndex="3" />
-      <Circle fx:id="Oq4r4" fill="WHITE" radius="6.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="3" GridPane.rowIndex="3" />
-      <Circle fx:id="Oq5r4" fill="WHITE" radius="6.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="4" GridPane.rowIndex="3" />
-      <Circle fx:id="Oq1r5" fill="WHITE" radius="6.0" stroke="BLACK" strokeType="INSIDE" GridPane.rowIndex="4" />
-      <Circle fx:id="Oq2r5" fill="WHITE" radius="6.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-      <Circle fx:id="Oq3r5" fill="WHITE" radius="6.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="2" GridPane.rowIndex="4" />
-      <Circle fx:id="Oq4r5" fill="WHITE" radius="6.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="3" GridPane.rowIndex="4" />
-      <Circle fx:id="Oq5r5" fill="WHITE" radius="6.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="4" GridPane.rowIndex="4" />
-      <Circle fx:id="Oq1r6" fill="WHITE" radius="6.0" stroke="BLACK" strokeType="INSIDE" GridPane.rowIndex="5" />
-      <Circle fx:id="Oq2r6" fill="WHITE" radius="6.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="1" GridPane.rowIndex="5" />
-      <Circle fx:id="Oq3r6" fill="WHITE" radius="6.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="2" GridPane.rowIndex="5" />
-      <Circle fx:id="Oq4r6" fill="WHITE" radius="6.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="3" GridPane.rowIndex="5" />
-      <Circle fx:id="Oq5r6" fill="WHITE" radius="6.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="4" GridPane.rowIndex="5" />
+      <Circle fx:id="Oq1r1" fill="WHITE" radius="6.0" stroke="BLACK" strokeType="INSIDE" visible="false" />
+      <Circle fx:id="Oq2r1" fill="WHITE" radius="6.0" stroke="BLACK" strokeType="INSIDE" visible="false" GridPane.columnIndex="1" />
+      <Circle fx:id="Oq3r1" fill="WHITE" radius="6.0" stroke="BLACK" strokeType="INSIDE" visible="false" GridPane.columnIndex="2" />
+      <Circle fx:id="Oq4r1" fill="WHITE" radius="6.0" stroke="BLACK" strokeType="INSIDE" visible="false" GridPane.columnIndex="3" />
+      <Circle fx:id="Oq5r1" fill="WHITE" radius="6.0" stroke="BLACK" strokeType="INSIDE" visible="false" GridPane.columnIndex="4" />
+      <Circle fx:id="Oq1r2" fill="WHITE" radius="6.0" stroke="BLACK" strokeType="INSIDE" visible="false" GridPane.rowIndex="1" />
+      <Circle fx:id="Oq2r2" fill="WHITE" radius="6.0" stroke="BLACK" strokeType="INSIDE" visible="false" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+      <Circle fx:id="Oq3r2" fill="WHITE" radius="6.0" stroke="BLACK" strokeType="INSIDE" visible="false" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+      <Circle fx:id="Oq4r2" fill="WHITE" radius="6.0" stroke="BLACK" strokeType="INSIDE" visible="false" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+      <Circle fx:id="Oq5r2" fill="WHITE" radius="6.0" stroke="BLACK" strokeType="INSIDE" visible="false" GridPane.columnIndex="4" GridPane.rowIndex="1" />
+      <Circle fx:id="Oq1r3" fill="WHITE" radius="6.0" stroke="BLACK" strokeType="INSIDE" visible="false" GridPane.rowIndex="2" />
+      <Circle fx:id="Oq2r3" fill="WHITE" radius="6.0" stroke="BLACK" strokeType="INSIDE" visible="false" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+      <Circle fx:id="Oq3r3" fill="WHITE" radius="6.0" stroke="BLACK" strokeType="INSIDE" visible="false" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+      <Circle fx:id="Oq4r3" fill="WHITE" radius="6.0" stroke="BLACK" strokeType="INSIDE" visible="false" GridPane.columnIndex="3" GridPane.rowIndex="2" />
+      <Circle fx:id="Oq5r3" fill="WHITE" radius="6.0" stroke="BLACK" strokeType="INSIDE" visible="false" GridPane.columnIndex="4" GridPane.rowIndex="2" />
+      <Circle fx:id="Oq1r4" fill="WHITE" radius="6.0" stroke="BLACK" strokeType="INSIDE" visible="false" GridPane.rowIndex="3" />
+      <Circle fx:id="Oq2r4" fill="WHITE" radius="6.0" stroke="BLACK" strokeType="INSIDE" visible="false" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+      <Circle fx:id="Oq3r4" fill="WHITE" radius="6.0" stroke="BLACK" strokeType="INSIDE" visible="false" GridPane.columnIndex="2" GridPane.rowIndex="3" />
+      <Circle fx:id="Oq4r4" fill="WHITE" radius="6.0" stroke="BLACK" strokeType="INSIDE" visible="false" GridPane.columnIndex="3" GridPane.rowIndex="3" />
+      <Circle fx:id="Oq5r4" fill="WHITE" radius="6.0" stroke="BLACK" strokeType="INSIDE" visible="false" GridPane.columnIndex="4" GridPane.rowIndex="3" />
+      <Circle fx:id="Oq1r5" fill="WHITE" radius="6.0" stroke="BLACK" strokeType="INSIDE" visible="false" GridPane.rowIndex="4" />
+      <Circle fx:id="Oq2r5" fill="WHITE" radius="6.0" stroke="BLACK" strokeType="INSIDE" visible="false" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+      <Circle fx:id="Oq3r5" fill="WHITE" radius="6.0" stroke="BLACK" strokeType="INSIDE" visible="false" GridPane.columnIndex="2" GridPane.rowIndex="4" />
+      <Circle fx:id="Oq4r5" fill="WHITE" radius="6.0" stroke="BLACK" strokeType="INSIDE" visible="false" GridPane.columnIndex="3" GridPane.rowIndex="4" />
+      <Circle fx:id="Oq5r5" fill="WHITE" radius="6.0" stroke="BLACK" strokeType="INSIDE" visible="false" GridPane.columnIndex="4" GridPane.rowIndex="4" />
+      <Circle fx:id="Oq1r6" fill="WHITE" radius="6.0" stroke="BLACK" strokeType="INSIDE" visible="false" GridPane.rowIndex="5" />
+      <Circle fx:id="Oq2r6" fill="WHITE" radius="6.0" stroke="BLACK" strokeType="INSIDE" visible="false" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+      <Circle fx:id="Oq3r6" fill="WHITE" radius="6.0" stroke="BLACK" strokeType="INSIDE" visible="false" GridPane.columnIndex="2" GridPane.rowIndex="5" />
+      <Circle fx:id="Oq4r6" fill="WHITE" radius="6.0" stroke="BLACK" strokeType="INSIDE" visible="false" GridPane.columnIndex="3" GridPane.rowIndex="5" />
+      <Circle fx:id="Oq5r6" fill="WHITE" radius="6.0" stroke="BLACK" strokeType="INSIDE" visible="false" GridPane.columnIndex="4" GridPane.rowIndex="5" />
    </GridPane>
 </AnchorPane>
