@@ -33,13 +33,8 @@ public class ScoreController {
             Oq1r1, Oq2r1, Oq3r1, Oq4r1, Oq5r1, Oq1r2, Oq2r2, Oq3r2, Oq4r2, Oq5r2,
             Oq1r3, Oq2r3, Oq3r3, Oq4r3, Oq5r3, Oq1r4, Oq2r4, Oq3r4, Oq4r4, Oq5r4,
             Oq1r5, Oq2r5, Oq3r5, Oq4r5, Oq5r5, Oq1r6, Oq2r6, Oq3r6, Oq4r6, Oq5r6;
-    private final Circle[][] thisCircles = {{Tq1r1, Tq2r1, Tq3r1, Tq4r1, Tq5r1}, {Tq1r2, Tq2r2, Tq3r2, Tq4r2, Tq5r2},
-            {Tq1r3, Tq2r3, Tq3r3, Tq4r3, Tq5r3}, {Tq1r4, Tq2r4, Tq3r4, Tq4r4, Tq5r4},
-            {Tq1r5, Tq2r5, Tq3r5, Tq4r5, Tq5r5}, {Tq1r6, Tq2r6, Tq3r6, Tq4r6, Tq5r6,}},
-            opponentCircles = {{Oq1r1, Oq2r1, Oq3r1, Oq4r1, Oq5r1}, {Oq1r2, Oq2r2, Oq3r2, Oq4r2, Oq5r2},
-                    {Oq1r3, Oq2r3, Oq3r3, Oq4r3, Oq5r3}, {Oq1r4, Oq2r4, Oq3r4, Oq4r4, Oq5r4},
-                    {Oq1r5, Oq2r5, Oq3r5, Oq4r5, Oq5r5}, {Oq1r6, Oq2r6, Oq3r6, Oq4r6, Oq5r6}};
-    private final Label[] roundLabels = {scoreLabel1, scoreLabel2, scoreLabel3, scoreLabel4, scoreLabel5, scoreLabel6};
+    private Circle[][] thisCircles, opponentCircles;
+    private Label[] roundLabels;
     private int thisScoreCounter, opponentScoreCounter;
     private ClientConnection connection;
     List<Boolean[]> thisScoreList, opponentScoreList;
@@ -64,6 +59,14 @@ public class ScoreController {
         this.portraitOpponent.setImage(image);
         thisScoreCounter = 0;
         opponentScoreCounter = 0;
+        roundLabels = new Label[] {scoreLabel1, scoreLabel2, scoreLabel3, scoreLabel4, scoreLabel5, scoreLabel6};
+        thisCircles = new Circle[][] {{Tq1r1, Tq2r1, Tq3r1, Tq4r1, Tq5r1}, {Tq1r2, Tq2r2, Tq3r2, Tq4r2, Tq5r2},
+                {Tq1r3, Tq2r3, Tq3r3, Tq4r3, Tq5r3}, {Tq1r4, Tq2r4, Tq3r4, Tq4r4, Tq5r4},
+                {Tq1r5, Tq2r5, Tq3r5, Tq4r5, Tq5r5}, {Tq1r6, Tq2r6, Tq3r6, Tq4r6, Tq5r6,}};
+        opponentCircles = new Circle[][] {{Oq1r1, Oq2r1, Oq3r1, Oq4r1, Oq5r1}, {Oq1r2, Oq2r2, Oq3r2, Oq4r2, Oq5r2},
+                {Oq1r3, Oq2r3, Oq3r3, Oq4r3, Oq5r3}, {Oq1r4, Oq2r4, Oq3r4, Oq4r4, Oq5r4},
+                {Oq1r5, Oq2r5, Oq3r5, Oq4r5, Oq5r5}, {Oq1r6, Oq2r6, Oq3r6, Oq4r6, Oq5r6}};
+
         setScoreBoard();
     }
 
