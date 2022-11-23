@@ -3,6 +3,7 @@ package server;
 import data.Data;
 import data.Tasks;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Game {
@@ -77,9 +78,38 @@ public class Game {
         p2.sendData(data1);
     }
 
-    private void setScore(Data data) {  //Tar in bol med 3 alternativ // wait for both roundscore //
-        //if player waiting - send to wait scene
+    private void setScore(Data data) {
+        Data data1 = new Data();
+
+        if (data.player == 1) {
+
+            Boolean[] answers;
+            answers = data.roundScore;
+            data1.playerOneScore.add(answers);
+            playerOneIsReady = true;
+
+
+        } else if (data.player == 2) {
+            Boolean[] answers;
+            answers = data.roundScore;
+            data1.playerTwoScore.add(answers);
+            playerTwoIsReady = true;
+        }
+        if (playerOneIsReady && !playerTwoIsReady) {
+            data1.task = Tasks.WAIT;
+            p1.sendData(data1);
+        } else if (playerTwoIsReady && !playerOneIsReady) {
+            data1.task = Tasks.WAIT;
+            p2.sendData(data1);
+        } else if (playerOneIsReady && playerTwoIsReady) {
+            data1.task = Tasks.SET_SCORE;
+            p1.sendData(data1);
+            p2.sendData(data1);
+        }
     }
+
+    //Tar in bol med 3 alternativ // wait for both roundscore //
+    //if player waiting - send to wait scene
     private void endGame(Data data) {
 
     }
