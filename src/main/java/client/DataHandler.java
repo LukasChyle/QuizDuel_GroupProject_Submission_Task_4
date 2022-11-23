@@ -65,7 +65,7 @@ public class DataHandler {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("scoreboardScene.fxml"));
         Parent root = loader.load();
         ScoreController scoreCon = loader.getController();
-        scoreCon.setScore(connection, ownNickname, opponentNickname, ownAvatar, opponentAvatar, data.playerOneScore, data.playerTwoScore);
+        scoreCon.setScene(connection, ownNickname, opponentNickname, ownAvatar, opponentAvatar, data.playerOneScore, data.playerTwoScore);
         startNewScene(root);
         currentNode = scoreCon.getNode();
 
