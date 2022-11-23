@@ -128,7 +128,7 @@ public class QuestionController implements Runnable {
         long lastTime = System.nanoTime();
         long currentTime;
 
-        for (int i = 3; i > 0; ) {
+        for (int i = 2; i > 0; ) {
             currentTime = System.nanoTime();
             delta += (currentTime - lastTime) / drawInterval;
             lastTime = currentTime;
