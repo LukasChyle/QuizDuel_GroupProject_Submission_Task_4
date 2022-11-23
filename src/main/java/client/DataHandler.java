@@ -27,12 +27,12 @@ public class DataHandler {
 
     protected void readData(Data data) throws IOException { // income data from server
         switch (data.task) {
-            case PICK_CATEGORY -> setCategory(data);
-            case SET_SCORE -> setScore(data);
-            case SET_PLAYER -> setPlayer(data);
+            case PICK_CATEGORY -> setCategory(data);  //Work in progress
+            case SET_SCORE -> setScore(data);  //Not started
+            case SET_PLAYER -> setPlayer(data);  //Klar
             case WAIT -> setWait(data);
             case ROUND -> setRound(data);
-            case OPPONENT_INFO -> setOpponentInfo(data);
+            case OPPONENT_INFO -> setOpponentInfo(data);  //Klar
         }
     }
 
@@ -74,7 +74,7 @@ public class DataHandler {
         currentNode = categoryCon.getNode();
     }
 
-    private void setPlayer(Data data) { // set if player 1 or 2
+    private void setPlayer(Data data) { // set if player 1 or 2. Set opponent avatar and nick
         this.player = data.player;
         Data newData = new Data();
         newData.task = Tasks.OPPONENT_INFO;
