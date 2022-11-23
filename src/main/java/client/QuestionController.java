@@ -22,7 +22,7 @@ public class QuestionController implements Runnable {
     private List<String[]> questionsList;
     private ClientConnection clientConnection;
     private int questionNumber, currentAnswer;
-    private Boolean[] answers = new Boolean[3];
+    private final Boolean[] answers = new Boolean[3];
     private boolean breakTimer;
 
     protected void setScene(List<String[]> questionsList, String category, ClientConnection clientConnection) {
@@ -33,19 +33,19 @@ public class QuestionController implements Runnable {
         setLayout();
     }
 
-    public void onButton1Click() throws InterruptedException {
+    public void onButton1Click() {
         setAnswer(1, button1);
     }
 
-    public void onButton2Click() throws InterruptedException {
+    public void onButton2Click() {
         setAnswer(2, button2);
     }
 
-    public void onButton3Click() throws InterruptedException {
+    public void onButton3Click() {
         setAnswer(3, button3);
     }
 
-    public void onButton4Click() throws InterruptedException {
+    public void onButton4Click() {
         setAnswer(4, button4);
     }
 
@@ -91,15 +91,53 @@ public class QuestionController implements Runnable {
 
         if (choice == currentAnswer) {
             answers[questionNumber] = true;
-            setButtonColor(button, true);
+            button.setStyle("-fx-background-color: green;");
         } else {
             answers[questionNumber] = false;
-            setButtonColor(button, false);
+            Button rightButton = switch (currentAnswer) {
+                case 1 -> button1;
+                case 2 -> button2;
+                case 3 -> button3;
+                case 4 -> button4;
+                default -> new Button();
+            };
+            if (button == null) {
+                if (button1 != rightButton){
+                    button1.setStyle("-fx-border-color: red;");
+                }
+                if (button2 != rightButton){
+                    button2.setStyle("-fx-border-color: red;");
+                }
+                if (button3 != rightButton){
+                    button3.setStyle("-fx-border-color: red;");
+                }
+                if (button4 != rightButton){
+                    button4.setStyle("-fx-border-color: red;");
+                }
+            } else {
+                button.setStyle("-fx-background-color: red;");
+            }
+            rightButton.setStyle("-fx-border-color: green;");
         }
+        new Thread(task).start();
+    }
 
-        System.out.println("came to pause");
+    Runnable task = () -> {
+        double drawInterval = 1_000_000_000;
+        double delta = 0;
+        long lastTime = System.nanoTime();
+        long currentTime;
 
-        pause();
+        for (int i = 3; i > 0; ) {
+            currentTime = System.nanoTime();
+            delta += (currentTime - lastTime) / drawInterval;
+            lastTime = currentTime;
+
+            if (delta >= 1) {
+                i--;
+                delta--;
+            }
+        }
         if (questionNumber <= 1) {
             questionNumber++;
             setLayout();
@@ -110,7 +148,7 @@ public class QuestionController implements Runnable {
             data.player = clientConnection.getDataHandler().player;
             clientConnection.sendData(data);
         }
-    }
+    };
 
     @Override // Timer
     public void run() {
@@ -141,68 +179,9 @@ public class QuestionController implements Runnable {
         }
     }
 
-    private void setButtonColor(Button button, boolean rightAnswer) {
-        Button rightButton = switch (currentAnswer) {
-            case 1 -> button1;
-            case 2 -> button2;
-            case 3 -> button3;
-            case 4 -> button4;
-            default -> null;
-        };
-
-        if (rightButton != null) {
-            changeColor(rightButton, "-fx-border-color: green;");
-        }
-        if (rightAnswer) {
-            changeColor(button, "-fx-background-color: green;");
-        } else {
-            if (button != null) {
-                changeColor(button, "-fx-background-color: red;");
-            } else {
-                if (rightButton != button1) {
-                    changeColor(button1, "-fx-border-color: red;");
-                }
-                if (rightButton != button2) {
-                    changeColor(button2, "-fx-border-color: red;");
-                }
-                if (rightButton != button3) {
-                    changeColor(button3, "-fx-border-color: red;");
-                }
-                if (rightButton != button4) {
-                    changeColor(button4, "-fx-border-color: red;");
-                }
-            }
-        }
-        System.out.println("did change colors");
-    }
-
-    private void changeColor(Button button, String color) {
-        Platform.runLater(() -> {
-            button.setStyle(color);
-        });
-    }
-
     private void setCountdownText(String text) {
         Platform.runLater(() -> {
             countdownLabel.setText(text);
         });
-    }
-
-    private void pause() {
-        double drawInterval = 1_000_000_000;
-        double delta = 0;
-        long lastTime = System.nanoTime();
-        long currentTime;
-
-        for (int i = 2; i > 0; ) {
-            currentTime = System.nanoTime();
-            delta += (currentTime - lastTime) / drawInterval;
-            lastTime = currentTime;
-
-            if (delta >= 1) {
-                i--;
-                delta--;
-            }
-        }
     }
 }
