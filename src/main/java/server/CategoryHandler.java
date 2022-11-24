@@ -18,9 +18,9 @@ public class CategoryHandler {
     protected String[] categoriesToChoose() {
         int counter = 0;
         String[] categories = {"Sport", "Historia", "Musik", "Vetenskap", "Film", "Geografi"};
-        String[] finalCategories = new String[6];
+        String[] finalCategories = new String[3];
         List<String> randomizedCategories = new ArrayList<>();
-        while (counter < 6) {
+        while (counter < 3) {
             Random r = new Random();
             int randomIndex = r.nextInt(0, categories.length);
             if (!randomizedCategories.contains(categories[randomIndex])) {
