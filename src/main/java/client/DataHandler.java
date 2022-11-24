@@ -31,7 +31,7 @@ public class DataHandler {
             case SET_SCORE -> setScore(data);  //Work in progress
             case SET_PLAYER -> setPlayer(data);  //Klar
             case WAIT -> setWait(data); //Klar
-            case ROUND -> setRound(data);
+            case ROUND -> setRound(data); //Klar
             case OPPONENT_INFO -> setOpponentInfo(data);  //Klar
         }
     }

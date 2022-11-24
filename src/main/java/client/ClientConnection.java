@@ -3,21 +3,27 @@ package client;
 import data.Data;
 import data.Tasks;
 
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
+import java.io.*;
 import java.net.InetAddress;
 import java.net.Socket;
 import java.net.UnknownHostException;
+import java.util.Properties;
 
 public class ClientConnection implements Runnable {
 
     private ObjectOutputStream out;
     private InetAddress host;
     private final DataHandler dataHandler;
+    private final Properties p;
 
     protected ClientConnection(String nickname, int avatar) {
         dataHandler = new DataHandler(nickname, avatar, this);
+        p = new Properties();
+        try {
+            p.load(new FileInputStream("src/main/resources/client/properties/Settings.properties"));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     protected DataHandler getDataHandler() {
@@ -43,7 +49,7 @@ public class ClientConnection implements Runnable {
         int port = 5000;
 
         try {
-            host = InetAddress.getByName("127.0.0.1");
+            host = InetAddress.getByName(p.getProperty("adress","127.0.0.1"));
         } catch (UnknownHostException e) {
             e.printStackTrace();
         }

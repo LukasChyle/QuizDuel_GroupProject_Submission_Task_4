@@ -5,6 +5,7 @@ import data.Tasks;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Properties;
 
 public class Game {
     private final CategoryHandler categoryHandler;
@@ -14,10 +15,19 @@ public class Game {
     private final int totalRounds;
     private final List<Boolean[]> playerOneScore = new ArrayList<>(), playerTwoScore = new ArrayList<>();
 
-    protected Game() {
-        totalRounds = 3; // TODO: placeholder until properties file (number of rounds)
-        int numberOfQuestions = 3; // TODO: placeholder until properties file (number of questions/round).
-        categoryHandler = new CategoryHandler(numberOfQuestions);
+
+    protected Game(Properties p) {
+        int rounds = Integer.parseInt(p.getProperty("questionPerRound", "3"));
+        int questions = Integer.parseInt(p.getProperty("roundsPerGame", "3"));
+
+        if (rounds > 6 || rounds < 1) {
+            rounds = 3;
+        }
+        if (questions > 5 || questions < 1) {
+            questions = 3;
+        }
+        totalRounds = rounds;
+        categoryHandler = new CategoryHandler(questions);
     }
 
     protected void protocol(Data data) { // income data from Client
@@ -116,5 +126,8 @@ public class Game {
             playerOneIsReady = false;
             playerTwoIsReady = false;
         }
+    }
+
+    private void endGame(Data data) {
     }
 }
