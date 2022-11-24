@@ -15,15 +15,15 @@ public class CategoryHandler {
         this.numberOfQuestions = numberOfQuestions;
     }
 
-    protected String[] categoriesToChoose(){
+    protected String[] categoriesToChoose() {
         int counter = 0;
-        String[] categories = {"Sport", "Vetenskap", "Musik"};
-        String[] finalCategories = new String[3];
+        String[] categories = {"Sport", "Historia", "Musik", "Vetenskap", "Film", "Geografi"};
+        String[] finalCategories = new String[6];
         List<String> randomizedCategories = new ArrayList<>();
-        while(counter <3){
+        while (counter < 6) {
             Random r = new Random();
             int randomIndex = r.nextInt(0, categories.length);
-            if(!randomizedCategories.contains(categories[randomIndex])){
+            if (!randomizedCategories.contains(categories[randomIndex])) {
                 randomizedCategories.add(categories[randomIndex]);
                 counter++;
             }
@@ -55,10 +55,10 @@ public class CategoryHandler {
             int randIndex;
             ArrayList<String[]> finalQuestions = new ArrayList<>();
             List<Integer> validQuestion = new ArrayList<>();
-            while(validQuestion.size() < numberOfQuestions) {
+            while (validQuestion.size() < numberOfQuestions) {
                 Random r = new Random();
                 randIndex = r.nextInt(1, listOfQuestions.size() - 1); // origin have to be 1.
-                if(!validQuestion.contains(randIndex)){
+                if (!validQuestion.contains(randIndex)) {
                     validQuestion.add(randIndex);
                     finalQuestions.add(listOfQuestions.get(randIndex));
                 }
