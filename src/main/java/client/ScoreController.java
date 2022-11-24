@@ -45,7 +45,8 @@ public class ScoreController implements Runnable {
     private int playerLeftGame;
 
     protected void setScene(ClientConnection connection, String thisNickname, String opponentNickname, int thisAvatar,
-                            int opponentAvatar, List<Boolean[]> playerOneScore, List<Boolean[]> playerTwoScore, boolean lastRound, int playerLeftGame) {
+                            int opponentAvatar, List<Boolean[]> playerOneScore, List<Boolean[]> playerTwoScore,
+                            boolean lastRound, int playerLeftGame) {
         this.connection = connection;
         this.thisNickname.setText(thisNickname);
         this.opponentNickname.setText(opponentNickname);
@@ -177,7 +178,7 @@ public class ScoreController implements Runnable {
         connection.sendData(data);
     }
 
-    public void onScoreboardButtonClick(ActionEvent event) {
+    public void onScoreboardButtonClick() {
     }
 }
 

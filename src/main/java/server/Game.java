@@ -2,7 +2,6 @@ package server;
 
 import data.Data;
 import data.Tasks;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
@@ -148,6 +147,6 @@ public class Game {
         }
     }
 
-    private void endGame(Data data) {
+    private void endGame() {
     }
 }

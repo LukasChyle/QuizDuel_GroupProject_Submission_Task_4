@@ -1,6 +1,5 @@
 package client;
 
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
@@ -18,8 +17,8 @@ public class WaitingController {
         closeButton.setText(buttonText);
     }
 
-    public void onCloseClick(ActionEvent event) {
-        System.exit(0); // Change this to controlled disconnection later
+    public void onCloseClick() {
+        System.exit(0);
     }
     protected Node getNode() {
         return messageField;
