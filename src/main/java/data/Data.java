@@ -16,4 +16,5 @@ public class Data implements Serializable {
     public List<Boolean[]> playerOneScore;
     public List<Boolean[]> playerTwoScore;
     public boolean lastRound;
+    public List<String[]> highScore;
 }
