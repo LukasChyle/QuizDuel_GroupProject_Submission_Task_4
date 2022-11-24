@@ -2,6 +2,7 @@ package server;
 
 import data.Data;
 import data.Tasks;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
@@ -15,7 +16,6 @@ public class Game {
     private final List<Boolean[]> playerOneScore = new ArrayList<>(), playerTwoScore = new ArrayList<>();
     private int playerOneAvatar, playerTwoAvatar;
     private String playerOneNickname, playerTwoNickname;
-
 
     protected Game(Properties p) {
         int rounds = Integer.parseInt(p.getProperty("roundsPerGame", "3"));
