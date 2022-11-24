@@ -31,17 +31,20 @@ public class Game {
     }
 
     protected void protocol(Data data) { // income data from Client
-        switch (data.task) {
-            case PICK_CATEGORY -> setCategory(data);
-            case SET_SCORE -> setScore(data);
-            case OPPONENT_INFO -> setPlayer(data);
-            case READY_ROUND -> startRound(data);
-            case LEFT_GAME -> playerLeftGame(data);
+        if (!gameFinnish) {
+            switch (data.task) {
+                case PICK_CATEGORY -> setCategory(data);
+                case SET_SCORE -> setScore(data);
+                case OPPONENT_INFO -> setPlayer(data);
+                case READY_ROUND -> startRound(data);
+                case LEFT_GAME -> playerLeftGame(data);
+            }
         }
     }
 
     private void playerLeftGame(Data data) {
         if (!gameFinnish) {
+            gameFinnish = true;
             Data data1 = new Data();
             data1.task = Tasks.SET_SCORE;
             data1.lastRound = true;
