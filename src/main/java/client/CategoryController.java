@@ -56,7 +56,7 @@ public class CategoryController implements Runnable {
 
     @FXML
     protected void onSurrenderClick(ActionEvent event) {
-        System.exit(0); // Change this to controlled disconnection later.
+        System.exit(0);
     }
 
     protected void chosenCategory(String category) { // Client returns a category for the server.

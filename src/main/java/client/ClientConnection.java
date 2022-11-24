@@ -1,7 +1,6 @@
 package client;
 
 import data.Data;
-import data.Tasks;
 
 import java.io.*;
 import java.net.InetAddress;

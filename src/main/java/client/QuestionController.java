@@ -21,7 +21,7 @@ public class QuestionController implements Runnable {
     @FXML
     private Label categoryLabel;
     @FXML
-    private Button button1, button2, button3, button4, closeButton;
+    private Button button1, button2, button3, button4;
     private List<String[]> questionsList;
     private ClientConnection clientConnection;
     private int questionNumber, currentAnswer;
