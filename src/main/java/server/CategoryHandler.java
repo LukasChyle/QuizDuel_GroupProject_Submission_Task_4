@@ -15,8 +15,25 @@ public class CategoryHandler {
         this.numberOfQuestions = numberOfQuestions;
     }
 
-    protected String[] categoriesToChoose() {
-        return new String[]{"Sport", "Vetenskap", "Musik"};
+    protected String[] categoriesToChoose(){
+        int counter = 0;
+        String[] categories = {"Sport", "Vetenskap", "Musik"};
+        String[] finalCategories = new String[3];
+        List<String> randomizedCategories = new ArrayList<>();
+        while(counter <3){
+            Random r = new Random();
+            int randomIndex = r.nextInt(0, categories.length);
+            if(!randomizedCategories.contains(categories[randomIndex])){
+                randomizedCategories.add(categories[randomIndex]);
+                counter++;
+            }
+        }
+        counter = 0;
+        for (String randomizedCategory : randomizedCategories) {
+            finalCategories[counter] = randomizedCategory;
+            counter++;
+        }
+        return finalCategories;
     }
 
     public List<String[]> getQuestions(String filePath) {
@@ -53,5 +70,10 @@ public class CategoryHandler {
         }
         return null;
     }
+
+  /*  public static void main(String[] args) {
+        CategoryHandler c = new CategoryHandler();
+        c.randomizeCategories();
+    }*/
 }
 
