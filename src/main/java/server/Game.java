@@ -152,7 +152,4 @@ public class Game {
             playerTwoIsReady = false;
         }
     }
-
-    private void endGame() {
-    }
 }
