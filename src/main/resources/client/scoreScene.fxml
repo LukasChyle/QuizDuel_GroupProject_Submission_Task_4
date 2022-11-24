@@ -28,13 +28,13 @@
       </font></Label>
    <Label fx:id="thisScore" alignment="CENTER" layoutX="19.0" layoutY="130.0" prefHeight="20.0" prefWidth="150.0" text="Score: 0">
       <font>
-         <Font name="System Bold" size="12.0" />
+         <Font name="System Bold" size="14.0" />
       </font></Label>
    <Label fx:id="opponentScore" alignment="CENTER" layoutX="179.0" layoutY="130.0" prefHeight="20.0" prefWidth="150.0" text="Score: 0">
       <font>
-         <Font name="System Bold" size="12.0" />
+         <Font name="System Bold" size="14.0" />
       </font></Label>
-   <GridPane layoutX="44.0" layoutY="150.0" prefHeight="295.0" prefWidth="100.0">
+   <GridPane layoutX="44.0" layoutY="150.0" prefHeight="250.0" prefWidth="100.0">
       <columnConstraints>
          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -81,7 +81,7 @@
       <Circle fx:id="Tq4r6" fill="WHITE" radius="6.0" stroke="BLACK" strokeType="INSIDE" visible="false" GridPane.columnIndex="3" GridPane.rowIndex="5" />
       <Circle fx:id="Tq5r6" fill="WHITE" radius="6.0" stroke="BLACK" strokeType="INSIDE" visible="false" GridPane.columnIndex="4" GridPane.rowIndex="5" />
    </GridPane>
-   <GridPane layoutX="155.0" layoutY="150.0" prefHeight="295.0" prefWidth="40.0">
+   <GridPane layoutX="155.0" layoutY="150.0" prefHeight="250.0" prefWidth="40.0">
       <columnConstraints>
          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
       </columnConstraints>
@@ -129,7 +129,7 @@
          <Font name="System Bold" size="14.0" />
       </font>
    </Label>
-   <GridPane layoutX="205.0" layoutY="150.0" prefHeight="295.0" prefWidth="100.0">
+   <GridPane layoutX="205.0" layoutY="150.0" prefHeight="250.0" prefWidth="100.0">
       <columnConstraints>
          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -177,6 +177,12 @@
       <Circle fx:id="Oq5r6" fill="WHITE" radius="6.0" stroke="BLACK" strokeType="INSIDE" visible="false" GridPane.columnIndex="4" GridPane.rowIndex="5" />
    </GridPane>
    <Label fx:id="finnishLabel" alignment="CENTER" layoutX="100.0" layoutY="15.0" prefWidth="150.0" text="Finnish Label" underline="true" visible="false">
+      <font>
+         <Font name="System Bold" size="24.0" />
+      </font>
+   </Label>
+   <Button fx:id="scoreboardButton" layoutX="15.0" layoutY="450.0" mnemonicParsing="false" onAction="#onScoreboardButtonClick" prefHeight="40.0" prefWidth="100.0" text="Scoreboard" visible="false" />
+   <Label fx:id="leftGameLabel" alignment="CENTER" layoutX="20.0" layoutY="400.0" prefHeight="35.0" prefWidth="300.0" visible="false">
       <font>
          <Font name="System Bold" size="24.0" />
       </font>

@@ -47,7 +47,15 @@ public class ServerConnection implements Runnable {
             } catch (IOException e) {
                 e.printStackTrace();
             }
+            disconnected();
         }
+    }
+
+    private void disconnected() {
+        Data data = new Data();
+        data.task = Tasks.LEFT_GAME;
+        data.player = player;
+        game.protocol(data);
     }
 
     public void sendData(Data outData) {
