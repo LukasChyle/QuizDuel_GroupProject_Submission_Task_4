@@ -14,6 +14,8 @@ public class Game {
     private int round = 0, currentPlayer = 1;
     private final int totalRounds;
     private final List<Boolean[]> playerOneScore = new ArrayList<>(), playerTwoScore = new ArrayList<>();
+    private int playerOneAvatar, playerTwoAvatar;
+    private String playerOneNickname, playerTwoNickname;
 
 
     protected Game(Properties p) {
@@ -66,8 +68,12 @@ public class Game {
 
     private void setPlayer(Data data) {
         if (data.player == 1) {
+            playerOneAvatar = data.opponentAvatar;
+            playerOneNickname = data.opponentNickname;
             p2.sendData(data);
         } else if (data.player == 2) {
+            playerTwoAvatar = data.opponentAvatar;
+            playerTwoNickname = data.opponentNickname;
             p1.sendData(data);
         }
     }
