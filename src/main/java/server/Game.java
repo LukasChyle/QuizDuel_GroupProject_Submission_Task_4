@@ -26,6 +26,23 @@ public class Game {
             case SET_SCORE -> setScore(data);
             case OPPONENT_INFO -> setPlayer(data);
             case READY_ROUND -> startRound(data);
+            case LEFT_GAME -> playerLeftGame(data);
+        }
+    }
+
+    private void playerLeftGame(Data data) {
+        if (!gameFinnish) {
+            Data data1 = new Data();
+            data1.task = Tasks.SET_SCORE;
+            data1.lastRound = true;
+            data1.player = data.player;
+            data1.playerOneScore = playerOneScore;
+            data1.playerTwoScore = playerTwoScore;
+            if (data.player == 1) {
+                p2.sendData(data1);
+            } else {
+                p1.sendData(data1);
+            }
         }
     }
 

@@ -27,12 +27,12 @@ public class DataHandler {
 
     protected void readData(Data data) throws IOException { // income data from server
         switch (data.task) {
-            case PICK_CATEGORY -> setCategory(data);  //Klar
-            case SET_SCORE -> setScore(data);  //Work in progress
-            case SET_PLAYER -> setPlayer(data);  //Klar
-            case WAIT -> setWait(data); //Klar
+            case PICK_CATEGORY -> setCategory(data);
+            case SET_SCORE -> setScore(data);
+            case SET_PLAYER -> setPlayer(data);
+            case WAIT -> setWait(data);
             case ROUND -> setRound(data);
-            case OPPONENT_INFO -> setOpponentInfo(data);  //Klar
+            case OPPONENT_INFO -> setOpponentInfo(data);
         }
     }
 
@@ -65,11 +65,10 @@ public class DataHandler {
         Parent root = loader.load();
         ScoreController scoreCon = loader.getController();
         scoreCon.setScene(connection, ownNickname, opponentNickname, ownAvatar, opponentAvatar,
-                data.playerOneScore, data.playerTwoScore, data.lastRound);
+                data.playerOneScore, data.playerTwoScore, data.lastRound, data.player);
         startNewScene(root);
         currentNode = scoreCon.getNode();
     }
-
 
     // makes the client go to category scene to pick a category from a selection.
     private void setCategory(Data data) throws IOException {

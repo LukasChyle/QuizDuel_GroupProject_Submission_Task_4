@@ -3,6 +3,7 @@ package client;
 import data.Data;
 import data.Tasks;
 import javafx.application.Platform;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
@@ -24,9 +25,9 @@ public class ScoreController implements Runnable {
     @FXML
     private ImageView portraitThis, portraitOpponent;
     @FXML
-    private Button closeButton;
+    private Button closeButton, scoreboardButton;
     @FXML
-    private Label thisNickname, opponentNickname, thisScore, opponentScore,
+    private Label thisNickname, opponentNickname, thisScore, opponentScore, leftGameLabel,
             scoreLabel1, scoreLabel2, scoreLabel3, scoreLabel4, scoreLabel5, scoreLabel6, finnishLabel;
     @FXML
     private Circle Tq1r1, Tq2r1, Tq3r1, Tq4r1, Tq5r1, Tq1r2, Tq2r2, Tq3r2, Tq4r2, Tq5r2,
@@ -41,13 +42,15 @@ public class ScoreController implements Runnable {
     private ClientConnection connection;
     private List<Boolean[]> thisScoreList, opponentScoreList;
     private boolean lastRound;
+    private int playerLeftGame;
 
     protected void setScene(ClientConnection connection, String thisNickname, String opponentNickname, int thisAvatar,
-                            int opponentAvatar, List<Boolean[]> playerOneScore, List<Boolean[]> playerTwoScore, boolean lastRound) {
+                            int opponentAvatar, List<Boolean[]> playerOneScore, List<Boolean[]> playerTwoScore, boolean lastRound, int playerLeftGame) {
         this.connection = connection;
         this.thisNickname.setText(thisNickname);
         this.opponentNickname.setText(opponentNickname);
         this.lastRound = lastRound;
+        this.playerLeftGame = playerLeftGame;
         if (connection.getDataHandler().player == 1) {
             thisScoreList = playerOneScore;
             opponentScoreList = playerTwoScore;
@@ -78,6 +81,7 @@ public class ScoreController implements Runnable {
             closeButton.setText("Exit");
             progressBar.setVisible(false);
             finnishLabel.setVisible(true);
+            scoreboardButton.setVisible(true);
         }
 
     }
@@ -108,7 +112,14 @@ public class ScoreController implements Runnable {
         }
         thisScore.setText("Score: " + thisScoreCounter);
         opponentScore.setText("Score: " + opponentScoreCounter);
-        if (thisScoreCounter < opponentScoreCounter) {
+        if (playerLeftGame != 0) {
+            thisPortraitCircle.setFill(Color.GREEN);
+            opponentPortraitCircle.setFill(Color.RED);
+            finnishLabel.setText("You won!");
+            finnishLabel.setTextFill(Color.GREEN);
+            leftGameLabel.setVisible(true);
+            leftGameLabel.setText(opponentNickname.getText() + " Left Game");
+        } else if (thisScoreCounter < opponentScoreCounter) {
             thisPortraitCircle.setFill(Color.RED);
             opponentPortraitCircle.setFill(Color.GREEN);
             if (lastRound) {
@@ -164,6 +175,9 @@ public class ScoreController implements Runnable {
         data.task = Tasks.READY_ROUND;
         data.player = connection.getDataHandler().player;
         connection.sendData(data);
+    }
+
+    public void onScoreboardButtonClick(ActionEvent event) {
     }
 }
 
