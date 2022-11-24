@@ -17,8 +17,8 @@ public class Game {
 
 
     protected Game(Properties p) {
-        int rounds = Integer.parseInt(p.getProperty("questionPerRound", "3"));
-        int questions = Integer.parseInt(p.getProperty("roundsPerGame", "3"));
+        int rounds = Integer.parseInt(p.getProperty("roundsPerGame", "3"));
+        int questions = Integer.parseInt(p.getProperty("questionPerRound", "3"));
 
         if (rounds > 6 || rounds < 1) {
             rounds = 3;
