@@ -1,41 +1,31 @@
 package server;
 
+
+import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.HashMap;
 import java.util.List;
-import data.Data;
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
-public class GetHighScore {
+
+public class GetHighScore implements Serializable {
     private boolean isValidHighScore;
     private List<String[]> highScoreList = new ArrayList<>();
 
     public List<String[]> getHighScore(List<Boolean[]> playerScore,String playerNickname,int playerAvatar){
 
+        List<String[]> deserializedList = new ArrayList<>();
         try {
+            FileInputStream fileInputStream = new FileInputStream("src/main/resources/server/HighScore/HighScoreList");
+            ObjectInputStream objectInputStream= new ObjectInputStream(fileInputStream);
+            deserializedList = (ArrayList)objectInputStream.readObject();
+            objectInputStream.close();
 
-            Path path = Path.of("src", "main", "resources", "server", "HighScore");
-            String strFile = Files.readString(path);
-
-            String[] scoreArray;
-            String[] score;
-
-            scoreArray = strFile.split("¤");
-            for (int i = 0; i < scoreArray.length; i++) {
-                score = scoreArray[i].split("\n");
-                highScoreList.add(score);
-            }
         }
-        catch (IOException e) {
-            e.printStackTrace();
+        catch (ClassNotFoundException | IOException ce){
+            ce.printStackTrace();
         }
+        highScoreList = deserializedList;
         int lowestScore = 999;
         int getLowestIndex = 0;
         int counter = 0;
@@ -91,17 +81,16 @@ public class GetHighScore {
                 highScoreList.add(s);
             }
         }
-
+        try {
+            FileOutputStream fileOutputStream = new FileOutputStream("src/main/resources/server/HighScore/HighScoreList");
+            ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream);
+            objectOutputStream.writeObject(highScoreList);
+            objectOutputStream.close();
+        }
+        catch(IOException e){
+            e.printStackTrace();
+        }
         return highScoreList;
-
-
-        /*HashMap<String, String> capitalCities = new HashMap<String, String>();
-        // Add keys and values (Country, City)
-        capitalCities.put("England", "London");
-        capitalCities.put("Germany", "Berlin");
-        capitalCities.put("Norway", "Oslo");
-        capitalCities.put("USA", "Washington DC");
-        System.out.println(capitalCities);*/
 
     }
 
