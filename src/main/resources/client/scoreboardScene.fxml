@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="500.0" prefWidth="350.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="client.ScoreboardController">
+   <Label layoutX="129.0" layoutY="30.0" text="High Score">
+      <font>
+         <Font name="System Bold" size="18.0" />
+      </font>
+   </Label>
+   <ListView fx:id="listView" layoutX="25.0" layoutY="74.0" prefHeight="350.0" prefWidth="300.0" />
+   <Button layoutX="125.0" layoutY="450.0" mnemonicParsing="false" onAction="#onBackButtonClick" prefHeight="40.0" prefWidth="100.0" text="Back" />
+</AnchorPane>
