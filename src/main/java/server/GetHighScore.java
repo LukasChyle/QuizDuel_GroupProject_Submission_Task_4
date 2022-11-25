@@ -4,6 +4,7 @@ package server;
 import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -15,16 +16,32 @@ public class GetHighScore implements Serializable {
     public List<String[]> getHighScore(List<Boolean[]> playerScore,String playerNickname,int playerAvatar){
 
         List<String[]> deserializedList = new ArrayList<>();
-        try {
-            FileInputStream fileInputStream = new FileInputStream("src/main/resources/server/HighScore/HighScoreList");
-            ObjectInputStream objectInputStream= new ObjectInputStream(fileInputStream);
-            deserializedList = (ArrayList)objectInputStream.readObject();
-            objectInputStream.close();
+        Path path = Paths.get("src/main/resources/server/HighScore/HighScoreList");
 
+        if (Files.exists(path)) {
+            try {
+                FileInputStream fileInputStream = new FileInputStream("src/main/resources/server/HighScore/HighScoreList");
+                ObjectInputStream objectInputStream= new ObjectInputStream(fileInputStream);
+                deserializedList = (ArrayList)objectInputStream.readObject();
+                objectInputStream.close();
+
+            }
+            catch (ClassNotFoundException | IOException ce){
+                ce.printStackTrace();
+            }
         }
-        catch (ClassNotFoundException | IOException ce){
-            ce.printStackTrace();
+        else if (Files.notExists(path)) {
+            try {
+                FileOutputStream fileOutputStream = new FileOutputStream("src/main/resources/server/HighScore/HighScoreList");
+                ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream);
+                objectOutputStream.writeObject(highScoreList);
+                objectOutputStream.close();
+            }
+            catch(IOException e){
+                e.printStackTrace();
+            }
         }
+
         highScoreList = deserializedList;
         int lowestScore = 999;
         int getLowestIndex = 0;
