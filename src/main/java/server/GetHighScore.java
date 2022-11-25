@@ -84,12 +84,12 @@ public class GetHighScore implements Serializable {
 
             }
 
-            for (int i = 0; i < arrayToCompare.length; i++) {
-                if (correctAnswer >= arrayToCompare[i]) {
+
+                if (correctAnswer >= lowestScore) {
                     isValidHighScore = true;
                 } else {
                     isValidHighScore = false;
-                }
+
             }
             if(isValidHighScore){
 
@@ -116,17 +116,19 @@ public class GetHighScore implements Serializable {
 
 
         List<Boolean[]> b = new ArrayList<>();
-        Boolean[] b1 = {true,true,false};
-        Boolean[] b2 = {false,true,false};
-        Boolean[] b3 = {false,false,false};
-        Boolean[] b4 = {false,true,false};
+        Boolean[] b1 = {true,true,true};
+        Boolean[] b2 = {true,true,true};
+        Boolean[] b3 = {true,true,true};
+        Boolean[] b4 = {true,true,true};
+        Boolean[] b5 = {true,true,true};
         b.add(b1);
         b.add(b2);
         b.add(b3);
         b.add(b4);
+        b.add(b5);
 
         GetHighScore g = new GetHighScore();
-        g.getHighScore(b,"name",1);
+        g.getHighScore(b,"Bäst",1);
 
         String[] s1 = {"Marcus","2", "4"};
         String[] s2 = {"Dennis","1", "4"};
