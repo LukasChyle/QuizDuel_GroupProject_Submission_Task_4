@@ -110,49 +110,4 @@ public class GetHighScore implements Serializable {
         return highScoreList;
 
     }
-
-    public static void main(String[] args) {
-
-
-
-        List<Boolean[]> b = new ArrayList<>();
-        Boolean[] b1 = {true,true,true};
-        Boolean[] b2 = {true,true,true};
-        Boolean[] b3 = {true,true,true};
-        Boolean[] b4 = {true,true,true};
-        Boolean[] b5 = {true,true,true};
-        b.add(b1);
-        b.add(b2);
-        b.add(b3);
-        b.add(b4);
-        b.add(b5);
-
-        GetHighScore g = new GetHighScore();
-        g.getHighScore(b,"Bäst",1);
-
-        String[] s1 = {"Marcus","2", "4"};
-        String[] s2 = {"Dennis","1", "4"};
-        String[] s3 = {"Lukas","6", "4"};
-        String[] s4 = {"Amar","7", "4"};
-        String[] s5 = {"Marcus","2", "4"};
-        String[] s6 = {"Dennis","1", "4"};
-        String[] s7 = {"Lukas","6", "4"};
-        String[] s8 = {"Amar","7", "4"};
-        String[] s9 = {"Marcus","2", "4"};
-        String[] s10 = {"Dennis","1", "4"};
-
-        List<String[]> highScore = new ArrayList<>();
-        highScore.add(s1);
-        highScore.add(s2);
-        highScore.add(s3);
-        highScore.add(s4);
-        highScore.add(s5);
-        highScore.add(s6);
-        highScore.add(s7);
-        highScore.add(s8);
-
-        highScore.add(s9);
-        highScore.add(s10);
-
-    }
 }
