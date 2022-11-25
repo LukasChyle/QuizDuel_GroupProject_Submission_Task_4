@@ -16,6 +16,7 @@ public class Game {
     private final List<Boolean[]> playerOneScore = new ArrayList<>(), playerTwoScore = new ArrayList<>();
     private int playerOneAvatar, playerTwoAvatar;
     private String playerOneNickname, playerTwoNickname;
+    private GetHighScore g;
 
     protected Game(Properties p) {
         int rounds = Integer.parseInt(p.getProperty("roundsPerGame", "3"));
@@ -29,6 +30,7 @@ public class Game {
         }
         totalRounds = rounds;
         categoryHandler = new CategoryHandler(questions);
+        g = new GetHighScore();
     }
 
     protected void protocol(Data data) { // income data from Client
@@ -143,6 +145,8 @@ public class Game {
             } else {
                 data1.lastRound = true;
                 gameFinnish = true;
+                data1.highScore = g.getHighScore(playerOneScore,playerOneNickname,playerOneAvatar);
+                data1.highScore= g.getHighScore(playerTwoScore,playerTwoNickname,playerTwoAvatar);
             }
             data1.playerOneScore = playerOneScore;
             data1.playerTwoScore = playerTwoScore;

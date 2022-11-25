@@ -1,29 +1,70 @@
 package server;
 
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import data.Data;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
 public class GetHighScore {
     private boolean isValidHighScore;
+    private List<String[]> highScoreList = new ArrayList<>();
 
-    protected GetHighScore(Data )
+    public List<String[]> getHighScore(List<Boolean[]> playerScore,String playerNickname,int playerAvatar){
 
-    public List<String[]> getHighScore(List<String[]> highScore, List<Boolean[]> aBooleans){
-        if(highScore.size()<10){
-            isValidHighScore = true;
+        try {
+
+            Path path = Path.of("src", "main", "resources", "server", "HighScore");
+            String strFile = Files.readString(path);
+
+            String[] scoreArray;
+            String[] score;
+
+            scoreArray = strFile.split("¤");
+            for (int i = 0; i < scoreArray.length; i++) {
+                score = scoreArray[i].split("\n");
+                highScoreList.add(score);
+            }
+        }
+        catch (IOException e) {
+            e.printStackTrace();
+        }
+        int lowestScore = 999;
+        int getLowestIndex = 0;
+        int counter = 0;
+        int correctAnswer = 0;
+        int wrongAnswer = 0;
+
+        int numberOfQuestions = 0;
+
+        for (Boolean[] aBoolean : playerScore) {
+            for (Boolean aBoolean1 : aBoolean) {
+                if (aBoolean1) {
+                    correctAnswer++;
+                }
+                else{
+                    wrongAnswer++;
+                }
+                numberOfQuestions = correctAnswer + wrongAnswer;
+            }
+        }
+
+        if(highScoreList.size()<10){
+            String[] s = {playerNickname,Integer.toString(playerAvatar),Integer.toString(correctAnswer)};
+            highScoreList.add(s);
         }
         else {
-            int lowestScore = 999;
-            int getLowestIndex = 0;
-            int counter = 0;
-            int correctAnswer = 0;
-            int wrongAnswer = 0;
-            int numberOfQuestions = 0;
-            int[] arrayToCompare = new int[highScore.size()];
 
-            for (String[] strings : highScore) {
+            int[] arrayToCompare = new int[highScoreList.size()];
+
+            for (String[] strings : highScoreList) {
                 arrayToCompare[counter] = Integer.parseInt(strings[2]);
                 counter++;
             }
@@ -36,18 +77,6 @@ public class GetHighScore {
 
             }
 
-            for (Boolean[] aBoolean : aBooleans) {
-                for (Boolean aBoolean1 : aBoolean) {
-                    if (aBoolean1) {
-                        correctAnswer++;
-                    }
-                    else{
-                        wrongAnswer++;
-                    }
-                    numberOfQuestions = correctAnswer + wrongAnswer;
-                }
-            }
-
             for (int i = 0; i < arrayToCompare.length; i++) {
                 if (correctAnswer >= arrayToCompare[i]) {
                     isValidHighScore = true;
@@ -57,12 +86,13 @@ public class GetHighScore {
             }
             if(isValidHighScore){
 
-                highScore.remove(getLowestIndex);
-                String[] s = {"name","5",Integer.toString(correctAnswer)};
-                highScore.add(s);
+                highScoreList.remove(getLowestIndex);
+                String[] s = {playerNickname,Integer.toString(playerAvatar),Integer.toString(correctAnswer)};
+                highScoreList.add(s);
             }
         }
-        return highScore;
+
+        return highScoreList;
 
 
         /*HashMap<String, String> capitalCities = new HashMap<String, String>();
@@ -77,28 +107,7 @@ public class GetHighScore {
 
     public static void main(String[] args) {
 
-        String[] s1 = {"Marcus","2", "4"};
-        String[] s2 = {"Dennis","1", "4"};
-        String[] s3 = {"Lukas","6", "4"};
-        String[] s4 = {"Amar","7", "4"};
-        String[] s5 = {"Marcus","2", "4"};
-        String[] s6 = {"Dennis","1", "4"};
-        String[] s7 = {"Lukas","6", "4"};
-        String[] s8 = {"Amar","7", "4"};
-        String[] s9 = {"Marcus","2", "4"};
-        String[] s10 = {"Dennis","1", "4"};
 
-        List<String[]> h1 = new ArrayList<>();
-        h1.add(s1);
-        h1.add(s2);
-        h1.add(s3);
-        h1.add(s4);
-        h1.add(s5);
-        h1.add(s6);
-        h1.add(s7);
-        h1.add(s8);
-        h1.add(s9);
-        h1.add(s10);
 
         List<Boolean[]> b = new ArrayList<>();
         Boolean[] b1 = {true,true,false};
@@ -111,7 +120,31 @@ public class GetHighScore {
         b.add(b4);
 
         GetHighScore g = new GetHighScore();
-        g.getHighScore(h1,b);
+        g.getHighScore(b,"name",1);
+
+        String[] s1 = {"Marcus","2", "4"};
+        String[] s2 = {"Dennis","1", "4"};
+        String[] s3 = {"Lukas","6", "4"};
+        String[] s4 = {"Amar","7", "4"};
+        String[] s5 = {"Marcus","2", "4"};
+        String[] s6 = {"Dennis","1", "4"};
+        String[] s7 = {"Lukas","6", "4"};
+        String[] s8 = {"Amar","7", "4"};
+        String[] s9 = {"Marcus","2", "4"};
+        String[] s10 = {"Dennis","1", "4"};
+
+        List<String[]> highScore = new ArrayList<>();
+        highScore.add(s1);
+        highScore.add(s2);
+        highScore.add(s3);
+        highScore.add(s4);
+        highScore.add(s5);
+        highScore.add(s6);
+        highScore.add(s7);
+        highScore.add(s8);
+
+        highScore.add(s9);
+        highScore.add(s10);
 
     }
 }
