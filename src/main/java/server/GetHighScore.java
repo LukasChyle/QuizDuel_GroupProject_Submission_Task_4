@@ -2,47 +2,16 @@ package server;
 
 
 import java.io.*;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
-public class GetHighScore implements Serializable {
-    private boolean isValidHighScore;
-    private List<String[]> highScoreList = new ArrayList<>();
+public class GetHighScore {
+    private List<String[]> highScoreList;
 
     public List<String[]> getHighScore(List<Boolean[]> playerScore,String playerNickname,int playerAvatar){
 
-        List<String[]> deserializedList = new ArrayList<>();
-        Path path = Paths.get("src/main/resources/server/HighScore/HighScoreList");
+        getHighScoreList(); // fetches a saved list or creates a new one.
 
-        if (Files.exists(path)) {
-            try {
-                FileInputStream fileInputStream = new FileInputStream("src/main/resources/server/HighScore/HighScoreList");
-                ObjectInputStream objectInputStream= new ObjectInputStream(fileInputStream);
-                deserializedList = (ArrayList)objectInputStream.readObject();
-                objectInputStream.close();
-
-            }
-            catch (ClassNotFoundException | IOException ce){
-                ce.printStackTrace();
-            }
-        }
-        else if (Files.notExists(path)) {
-            try {
-                FileOutputStream fileOutputStream = new FileOutputStream("src/main/resources/server/HighScore/HighScoreList");
-                ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream);
-                objectOutputStream.writeObject(highScoreList);
-                objectOutputStream.close();
-            }
-            catch(IOException e){
-                e.printStackTrace();
-            }
-        }
-
-        highScoreList = deserializedList;
         int lowestScore = 999;
         int getLowestIndex = 0;
         int counter = 0;
@@ -84,8 +53,8 @@ public class GetHighScore implements Serializable {
 
             }
 
-
-                if (correctAnswer >= lowestScore) {
+            boolean isValidHighScore;
+            if (correctAnswer >= lowestScore) {
                     isValidHighScore = true;
                 } else {
                     isValidHighScore = false;
@@ -98,16 +67,35 @@ public class GetHighScore implements Serializable {
                 highScoreList.add(s);
             }
         }
-        try {
-            FileOutputStream fileOutputStream = new FileOutputStream("src/main/resources/server/HighScore/HighScoreList");
-            ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream);
+
+        saveHighScoreList(); // saves the high score to file, replaces existing one.
+        return highScoreList;
+    }
+
+    private void saveHighScoreList(){
+        try (ObjectOutputStream objectOutputStream = new ObjectOutputStream(new FileOutputStream(
+                "src/main/resources/server/HighScore/HighScoreList", false))) {
             objectOutputStream.writeObject(highScoreList);
-            objectOutputStream.close();
-        }
+        } // try with recourses closes stream automatically
         catch(IOException e){
             e.printStackTrace();
         }
-        return highScoreList;
+    }
 
+    @SuppressWarnings("unchecked") //because java can't ensure the file fetched is of type "List<String[]>"
+    private void getHighScoreList() {
+        List<String[]> deserializedList = null;
+        try (ObjectInputStream objectInputStream= new ObjectInputStream(new FileInputStream(
+                "src/main/resources/server/HighScore/HighScoreList"))) {
+            deserializedList = (List<String[]>) objectInputStream.readObject();
+        } // try with recourses closes steam automatically
+        catch (ClassNotFoundException | IOException e){
+            e.printStackTrace();
+        }
+        if (deserializedList != null) { // if file with list exists, use it or else create new list.
+            highScoreList = deserializedList;
+        } else {
+            highScoreList = new ArrayList<>();
+        }
     }
 }
