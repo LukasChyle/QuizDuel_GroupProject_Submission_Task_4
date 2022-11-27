@@ -4,7 +4,10 @@ import data.Data;
 import data.Tasks;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
@@ -12,11 +15,17 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 import java.io.File;
+import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 public class ScoreController implements Runnable {
+
     @FXML
     private Circle thisPortraitCircle, opponentPortraitCircle;
     @FXML
@@ -35,6 +44,7 @@ public class ScoreController implements Runnable {
             Oq1r1, Oq2r1, Oq3r1, Oq4r1, Oq5r1, Oq1r2, Oq2r2, Oq3r2, Oq4r2, Oq5r2,
             Oq1r3, Oq2r3, Oq3r3, Oq4r3, Oq5r3, Oq1r4, Oq2r4, Oq3r4, Oq4r4, Oq5r4,
             Oq1r5, Oq2r5, Oq3r5, Oq4r5, Oq5r5, Oq1r6, Oq2r6, Oq3r6, Oq4r6, Oq5r6;
+    private Stage stage;
     private Circle[][] thisCircles, opponentCircles;
     private Label[] roundLabels;
     private int thisScoreCounter, opponentScoreCounter;
@@ -45,7 +55,7 @@ public class ScoreController implements Runnable {
 
     protected void setScene(ClientConnection connection, String thisNickname, String opponentNickname, int thisAvatar,
                             int opponentAvatar, List<Boolean[]> playerOneScore, List<Boolean[]> playerTwoScore,
-                            boolean lastRound, int playerLeftGame) {
+                            boolean lastRound, int playerLeftGame, List<String[]> highScoreList) throws IOException {
         this.connection = connection;
         this.thisNickname.setText(thisNickname);
         this.opponentNickname.setText(opponentNickname);
@@ -82,8 +92,21 @@ public class ScoreController implements Runnable {
             progressBar.setVisible(false);
             finnishLabel.setVisible(true);
             scoreboardButton.setVisible(true);
-        }
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("highScoreScene.fxml"));
+            Parent root = loader.load();
+            HighScoreController hsController = loader.getController();
 
+            Platform.runLater(() -> {
+                stage = new Stage();
+                stage.setTitle("High Score");
+                stage.initModality(Modality.APPLICATION_MODAL);
+                stage.initStyle(StageStyle.UNDECORATED);
+                Scene scene = new Scene(root,350,500);
+                Movable.setMovable(scene, stage);
+                stage.setScene(scene);
+                hsController.setHighScore(highScoreList, stage);
+            });
+        }
     }
 
     private void setScoreBoard() {
@@ -178,6 +201,10 @@ public class ScoreController implements Runnable {
     }
 
     public void onScoreboardButtonClick() {
+        stage.setY(getNode().getScene().getWindow().getY());
+        stage.setX(getNode().getScene().getWindow().getX());
+        stage.show();
     }
+
 }
 
