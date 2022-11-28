@@ -42,13 +42,19 @@ public class GetHighScore {
                 highScoreList.add(0, s);
             }
             else{
+                int lengthOfList = highScoreList.size();
                 for (String[] strings : highScoreList) {
 
                     if(correctAnswer>=Integer.parseInt(strings[2])){
                         highScoreList.add(count, s);
+                        break;
                     }
-                    count++;
+                        count++;
                 }
+                if(highScoreList.size()==lengthOfList){
+                    highScoreList.add(count,s);
+                }
+
             }
         }
         else {
@@ -88,19 +94,6 @@ public class GetHighScore {
                             count++;
                     }isSorted = true;
                 }
-               /* Collections.sort(highScoreList, new Comparator<String[]>() {;
-                    @Override
-                    public int compare(String[] o1, String[] o2) {
-                        int o1Compare = Integer.parseInt(o1[2]);
-                        int o2Compare = Integer.parseInt(o2[2]);
-                        if(o1Compare>o2Compare){
-                            return 1;
-                        }
-                        else{
-                            return 0;
-                        }
-                    }
-                });*/
             }
         }
 
@@ -135,19 +128,19 @@ public class GetHighScore {
         }
     }
 
-    public static void main(String[] args) {
+   /* public static void main(String[] args) {
 
-        Boolean[] b = {true,true,true};
+        Boolean[] b = {false,false,true};
         Boolean[] b1 = {true,true,true};
-        Boolean[] b2 = {true,false,false};
+        //Boolean[] b2 = {true,false,false};
 
         List<Boolean[]> bool = new ArrayList<>();
         bool.add(b);
         bool.add(b1);
-        bool.add(b2);
+        //bool.add(b2);
 
         GetHighScore g = new GetHighScore();
         g.getHighScore(bool, "marcus",1);
 
-    }
+    }*/
 }
