@@ -11,7 +11,7 @@ public class GetHighScore {
     private List<String[]> highScoreList;
     private boolean isSorted = false;
 
-    public List<String[]> getHighScore(List<Boolean[]> playerScore,String playerNickname,int playerAvatar){
+    public List<String[]> getHighScore(List<Boolean[]> playerScore, String playerNickname, int playerAvatar) {
 
         getHighScoreList(); // fetches a saved list or creates a new one.
 
@@ -27,37 +27,34 @@ public class GetHighScore {
             for (Boolean aBoolean1 : aBoolean) {
                 if (aBoolean1) {
                     correctAnswer++;
-                }
-                else{
+                } else {
                     wrongAnswer++;
                 }
                 numberOfQuestions = correctAnswer + wrongAnswer;
             }
         }
 
-        if(highScoreList.size()<10){
+        if (highScoreList.size() < 10) {
             int count = 0;
-            String[] s = {Integer.toString(playerAvatar),playerNickname,Integer.toString(correctAnswer)};
-            if(highScoreList.size()==0) {
+            String[] s = {Integer.toString(playerAvatar), playerNickname, Integer.toString(correctAnswer)};
+            if (highScoreList.size() == 0) {
                 highScoreList.add(0, s);
-            }
-            else{
+            } else {
                 int lengthOfList = highScoreList.size();
                 for (String[] strings : highScoreList) {
 
-                    if(correctAnswer>=Integer.parseInt(strings[2])){
+                    if (correctAnswer >= Integer.parseInt(strings[2])) {
                         highScoreList.add(count, s);
                         break;
                     }
-                        count++;
+                    count++;
                 }
-                if(highScoreList.size()==lengthOfList){
-                    highScoreList.add(count,s);
+                if (highScoreList.size() == lengthOfList) {
+                    highScoreList.add(count, s);
                 }
 
             }
-        }
-        else {
+        } else {
 
             int[] arrayToCompare = new int[highScoreList.size()];
 
@@ -67,7 +64,7 @@ public class GetHighScore {
             }
 
             for (int i = 0; i < arrayToCompare.length; i++) {
-                if(lowestScore>=arrayToCompare[i]){
+                if (lowestScore >= arrayToCompare[i]) {
                     lowestScore = arrayToCompare[i];
                     getLowestIndex = i;
                 }
@@ -75,24 +72,25 @@ public class GetHighScore {
             }
             boolean isValidHighScore;
             if (correctAnswer >= lowestScore) {
-                    isValidHighScore = true;
-                } else {
-                    isValidHighScore = false;
+                isValidHighScore = true;
+            } else {
+                isValidHighScore = false;
 
             }
-            if(isValidHighScore){
+            if (isValidHighScore) {
 
                 highScoreList.remove(getLowestIndex);
-                String[] s = {Integer.toString(playerAvatar),playerNickname,Integer.toString(correctAnswer)};
-                int count= 0;
-                while(!isSorted){
+                String[] s = {Integer.toString(playerAvatar), playerNickname, Integer.toString(correctAnswer)};
+                int count = 0;
+                while (!isSorted) {
                     for (String[] strings : highScoreList) {
-                            if(correctAnswer>=Integer.parseInt(strings[2])){
-                                highScoreList.add(count, s);
-                                break;
-                            }
-                            count++;
-                    }isSorted = true;
+                        if (correctAnswer >= Integer.parseInt(strings[2])) {
+                            highScoreList.add(count, s);
+                            break;
+                        }
+                        count++;
+                    }
+                    isSorted = true;
                 }
             }
         }
@@ -101,12 +99,12 @@ public class GetHighScore {
         return highScoreList;
     }
 
-    private void saveHighScoreList(){
+    private void saveHighScoreList() {
         try (ObjectOutputStream objectOutputStream = new ObjectOutputStream(new FileOutputStream(
                 "src/main/resources/server/HighScore/HighScoreList", false))) {
             objectOutputStream.writeObject(highScoreList);
         } // try with recourses closes stream automatically
-        catch(IOException e){
+        catch (IOException e) {
             e.printStackTrace();
         }
     }
@@ -114,11 +112,11 @@ public class GetHighScore {
     @SuppressWarnings("unchecked") //because java can't ensure the file fetched is of type "List<String[]>"
     private void getHighScoreList() {
         List<String[]> deserializedList = null;
-        try (ObjectInputStream objectInputStream= new ObjectInputStream(new FileInputStream(
+        try (ObjectInputStream objectInputStream = new ObjectInputStream(new FileInputStream(
                 "src/main/resources/server/HighScore/HighScoreList"))) {
             deserializedList = (List<String[]>) objectInputStream.readObject();
         } // try with recourses closes steam automatically
-        catch (ClassNotFoundException | IOException e){
+        catch (ClassNotFoundException | IOException e) {
             e.printStackTrace();
         }
         if (deserializedList != null) { // if file with list exists, use it or else create new list.
@@ -128,19 +126,20 @@ public class GetHighScore {
         }
     }
 
+
    /* public static void main(String[] args) {
 
-        Boolean[] b = {false,false,true};
+        Boolean[] b = {false,false,false};
         Boolean[] b1 = {true,true,true};
-        //Boolean[] b2 = {true,false,false};
+        Boolean[] b2 = {true,false,false};
 
         List<Boolean[]> bool = new ArrayList<>();
         bool.add(b);
         bool.add(b1);
-        //bool.add(b2);
+        bool.add(b2);
 
         GetHighScore g = new GetHighScore();
-        g.getHighScore(bool, "marcus",1);
+        g.getHighScore(bool, "dennis",1);
 
     }*/
 }
