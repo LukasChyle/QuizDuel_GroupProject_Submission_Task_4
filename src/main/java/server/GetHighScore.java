@@ -9,6 +9,7 @@ import java.util.List;
 
 public class GetHighScore {
     private List<String[]> highScoreList;
+    private boolean isSorted = false;
 
     public List<String[]> getHighScore(List<Boolean[]> playerScore,String playerNickname,int playerAvatar){
 
@@ -35,22 +36,20 @@ public class GetHighScore {
         }
 
         if(highScoreList.size()<10){
+            int count = 0;
             String[] s = {Integer.toString(playerAvatar),playerNickname,Integer.toString(correctAnswer)};
-            highScoreList.add(0,s);
-            Collections.sort(highScoreList, new Comparator<String[]>() {
-                @Override
-                public int compare(String[] o1, String[] o2) {
-                   int o1Compare = Integer.parseInt(o1[2]);
-                    int o2Compare = Integer.parseInt(o2[2]);
-                    if (o1Compare>o2Compare){
-                        return o1Compare;
+            if(highScoreList.size()==0) {
+                highScoreList.add(0, s);
+            }
+            else{
+                for (String[] strings : highScoreList) {
+
+                    if(correctAnswer>=Integer.parseInt(strings[2])){
+                        highScoreList.add(count, s);
                     }
-                    else if(o1Compare<o2Compare){
-                        return o2Compare;
-                    }
-                    return 0;
+                    count++;
                 }
-            });
+            }
         }
         else {
 
@@ -79,10 +78,29 @@ public class GetHighScore {
 
                 highScoreList.remove(getLowestIndex);
                 String[] s = {Integer.toString(playerAvatar),playerNickname,Integer.toString(correctAnswer)};
-                highScoreList.add(0,s);
-                for (String[] strings : highScoreList) {
-                    while(strings.)
+                int count= 0;
+                while(!isSorted){
+                    for (String[] strings : highScoreList) {
+                            if(correctAnswer>=Integer.parseInt(strings[2])){
+                                highScoreList.add(count, s);
+                                break;
+                            }
+                            count++;
+                    }isSorted = true;
                 }
+               /* Collections.sort(highScoreList, new Comparator<String[]>() {;
+                    @Override
+                    public int compare(String[] o1, String[] o2) {
+                        int o1Compare = Integer.parseInt(o1[2]);
+                        int o2Compare = Integer.parseInt(o2[2]);
+                        if(o1Compare>o2Compare){
+                            return 1;
+                        }
+                        else{
+                            return 0;
+                        }
+                    }
+                });*/
             }
         }
 
@@ -121,7 +139,7 @@ public class GetHighScore {
 
         Boolean[] b = {true,true,true};
         Boolean[] b1 = {true,true,true};
-        Boolean[] b2 = {false,false,false};
+        Boolean[] b2 = {true,false,false};
 
         List<Boolean[]> bool = new ArrayList<>();
         bool.add(b);
@@ -129,7 +147,7 @@ public class GetHighScore {
         bool.add(b2);
 
         GetHighScore g = new GetHighScore();
-        g.getHighScore(bool, "mac",1);
+        g.getHighScore(bool, "marcus",1);
 
     }
 }
