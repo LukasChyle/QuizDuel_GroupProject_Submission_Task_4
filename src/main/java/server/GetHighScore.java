@@ -3,6 +3,8 @@ package server;
 
 import java.io.*;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 public class GetHighScore {
@@ -33,8 +35,22 @@ public class GetHighScore {
         }
 
         if(highScoreList.size()<10){
-            String[] s = {playerNickname,Integer.toString(playerAvatar),Integer.toString(correctAnswer)};
-            highScoreList.add(s);
+            String[] s = {Integer.toString(playerAvatar),playerNickname,Integer.toString(correctAnswer)};
+            highScoreList.add(0,s);
+            Collections.sort(highScoreList, new Comparator<String[]>() {
+                @Override
+                public int compare(String[] o1, String[] o2) {
+                   int o1Compare = Integer.parseInt(o1[2]);
+                    int o2Compare = Integer.parseInt(o2[2]);
+                    if (o1Compare>o2Compare){
+                        return o1Compare;
+                    }
+                    else if(o1Compare<o2Compare){
+                        return o2Compare;
+                    }
+                    return 0;
+                }
+            });
         }
         else {
 
@@ -52,7 +68,6 @@ public class GetHighScore {
                 }
 
             }
-
             boolean isValidHighScore;
             if (correctAnswer >= lowestScore) {
                     isValidHighScore = true;
@@ -63,8 +78,11 @@ public class GetHighScore {
             if(isValidHighScore){
 
                 highScoreList.remove(getLowestIndex);
-                String[] s = {playerNickname,Integer.toString(playerAvatar),Integer.toString(correctAnswer)};
-                highScoreList.add(s);
+                String[] s = {Integer.toString(playerAvatar),playerNickname,Integer.toString(correctAnswer)};
+                highScoreList.add(0,s);
+                for (String[] strings : highScoreList) {
+                    while(strings.)
+                }
             }
         }
 
@@ -97,5 +115,21 @@ public class GetHighScore {
         } else {
             highScoreList = new ArrayList<>();
         }
+    }
+
+    public static void main(String[] args) {
+
+        Boolean[] b = {true,true,true};
+        Boolean[] b1 = {true,true,true};
+        Boolean[] b2 = {false,false,false};
+
+        List<Boolean[]> bool = new ArrayList<>();
+        bool.add(b);
+        bool.add(b1);
+        bool.add(b2);
+
+        GetHighScore g = new GetHighScore();
+        g.getHighScore(bool, "mac",1);
+
     }
 }

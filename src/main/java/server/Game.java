@@ -145,8 +145,8 @@ public class Game {
             } else {
                 data1.lastRound = true;
                 gameFinnish = true;
-                data1.highScore = g.getHighScore(playerOneScore,playerOneNickname,playerOneAvatar);
-                data1.highScore= g.getHighScore(playerTwoScore,playerTwoNickname,playerTwoAvatar);
+                data1.highScoreList = g.getHighScore(playerOneScore,playerOneNickname,playerOneAvatar);
+                data1.highScoreList= g.getHighScore(playerTwoScore,playerTwoNickname,playerTwoAvatar);
             }
             data1.playerOneScore = playerOneScore;
             data1.playerTwoScore = playerTwoScore;
