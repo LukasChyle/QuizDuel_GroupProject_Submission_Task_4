@@ -145,12 +145,12 @@
             <Font name="System Bold" size="14.0" />
          </font>
       </Label>
-      <Label prefHeight="30.0" prefWidth="240.0" GridPane.columnIndex="2" GridPane.rowIndex="8">
+      <Label fx:id="label9HS" prefHeight="30.0" prefWidth="240.0" GridPane.columnIndex="2" GridPane.rowIndex="8">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>
       </Label>
-      <Label prefHeight="30.0" prefWidth="240.0" GridPane.columnIndex="2" GridPane.rowIndex="9">
+      <Label fx:id="label10HS" prefHeight="30.0" prefWidth="240.0" GridPane.columnIndex="2" GridPane.rowIndex="9">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>
