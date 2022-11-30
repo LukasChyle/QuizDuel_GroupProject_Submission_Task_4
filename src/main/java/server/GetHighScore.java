@@ -130,11 +130,11 @@ public class GetHighScore {
     }
 
 
- /* public static void main(String[] args) {
+   /* public static void main(String[] args) {
 
         Boolean[] b = {false,false,false};
-        Boolean[] b1 = {false,false,false};
-        Boolean[] b2 = {false,false,false};
+        Boolean[] b1 = {true,true,true};
+        Boolean[] b2 = {true,false,false};
 
         List<Boolean[]> bool = new ArrayList<>();
         bool.add(b);

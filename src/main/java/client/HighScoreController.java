@@ -27,13 +27,13 @@ public class HighScoreController {
 
     protected void setHighScore(List<String[]> highScoreList, Stage stage) {
         this.stage = stage;
-        ImageView[] highScoreAvatars = new ImageView[] {image1HS, image2HS, image3HS, image4HS,
+        ImageView[] highScoreAvatars = new ImageView[]{image1HS, image2HS, image3HS, image4HS,
                 image5HS, image6HS, image7HS, image8HS, image9HS, image10HS};
-        Label[] highScoreInfo = new Label[] {label1HS, label2HS, label3HS, label4HS,
+        Label[] highScoreInfo = new Label[]{label1HS, label2HS, label3HS, label4HS,
                 label5HS, label6HS, label7HS, label8HS, label9HS, label10HS};
 
         Platform.runLater(() -> {
-            for (int i = 0; i < highScoreList.size() && i < 10; i++) {
+            for (int i = 0; i < highScoreList.size(); i++) {
                 String[] currentScore = highScoreList.get(i);
                 File file = new File("src/main/resources/client/avatars/avatar-" +
                         Integer.parseInt(currentScore[0]) + ".png");
@@ -52,13 +52,6 @@ public class HighScoreController {
         stage = (Stage) image1HS.getScene().getWindow();
         stage.close();
     }
-
-
-
-
-
-
-
 
 
 }
