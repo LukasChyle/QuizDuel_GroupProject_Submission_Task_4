@@ -35,7 +35,7 @@ public class GetHighScore {
         }
         double correctAnswerTemp = correctAnswer;
         double numberOfQuestionsTemp = numberOfQuestions;
-        int percentageCorrect = (int) Math.round((correctAnswerTemp/numberOfQuestionsTemp)*100);
+        int percentageCorrect = (int) Math.round(((correctAnswerTemp/numberOfQuestionsTemp)*100));
 
         if (highScoreList.size() < 10) {
             int count = 0;
