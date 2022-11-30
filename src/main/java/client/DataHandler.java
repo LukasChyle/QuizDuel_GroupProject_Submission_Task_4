@@ -65,7 +65,7 @@ public class DataHandler {
         Parent root = loader.load();
         ScoreController scoreCon = loader.getController();
         scoreCon.setScene(connection, ownNickname, opponentNickname, ownAvatar, opponentAvatar,
-                data.playerOneScore, data.playerTwoScore, data.lastRound, data.player);
+                data.playerOneScore, data.playerTwoScore, data.lastRound, data.player, data.highScoreList);
         startNewScene(root);
         currentNode = scoreCon.getNode();
     }

@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="500.0" prefWidth="350.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="client.HighScoreController">
+   <Label alignment="CENTER" layoutX="47.0" layoutY="14.0" prefWidth="300.0" text="High Score Top 10 ">
+      <font>
+         <Font name="System Bold" size="18.0" />
+      </font>
+   </Label>
+   <Button layoutX="125.0" layoutY="450.0" mnemonicParsing="false" onAction="#onHighScoreBackButtonClick" prefHeight="40.0" prefWidth="100.0" text="Back" />
+   <GridPane layoutX="15.0" layoutY="47.0" prefHeight="392.0" prefWidth="320.0">
+      <columnConstraints>
+         <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="155.199951171875" minWidth="10.0" prefWidth="34.00001220703125" />
+         <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="155.199951171875" minWidth="10.0" prefWidth="44.59998779296875" />
+         <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="276.80004501342773" minWidth="10.0" prefWidth="242.4" />
+      </columnConstraints>
+      <rowConstraints>
+         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+      </rowConstraints>
+      <Circle fill="WHITE" radius="18.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="1" />
+      <Circle fill="WHITE" radius="18.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+      <Circle fill="WHITE" radius="18.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+      <Circle fill="WHITE" radius="18.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+      <Circle fill="WHITE" radius="18.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+      <Circle fill="WHITE" radius="18.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+      <Circle fill="WHITE" radius="18.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+      <Circle fill="WHITE" radius="18.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+      <Circle fill="WHITE" radius="18.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="1" GridPane.rowIndex="8" />
+      <Circle fill="WHITE" radius="18.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="1" GridPane.rowIndex="9" />
+      <ImageView fx:id="image1HS" fitHeight="27.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" />
+      <ImageView fx:id="image2HS" fitHeight="27.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+      <ImageView fx:id="image3HS" fitHeight="27.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+      <ImageView fx:id="image4HS" fitHeight="27.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+      <ImageView fx:id="image5HS" fitHeight="27.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+      <ImageView fx:id="image6HS" fitHeight="27.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+      <ImageView fx:id="image7HS" fitHeight="27.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+      <ImageView fx:id="image8HS" fitHeight="27.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+      <ImageView fx:id="image9HS" fitHeight="27.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="8" />
+      <ImageView fx:id="image10HS" fitHeight="27.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="9" />
+      <Label alignment="TOP_RIGHT" prefWidth="40.0" text="1.">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <Label alignment="TOP_RIGHT" prefWidth="40.0" text="2." GridPane.rowIndex="1">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <Label alignment="TOP_RIGHT" prefWidth="40.0" text="3." GridPane.rowIndex="2">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <Label alignment="TOP_RIGHT" prefWidth="40.0" text="4." GridPane.rowIndex="3">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <Label alignment="TOP_RIGHT" prefWidth="40.0" text="5." GridPane.rowIndex="4">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <Label alignment="TOP_RIGHT" prefWidth="40.0" text="6." GridPane.rowIndex="5">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <Label alignment="TOP_RIGHT" prefWidth="40.0" text="7." GridPane.rowIndex="6">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <Label alignment="TOP_RIGHT" prefWidth="40.0" text="8." GridPane.rowIndex="7">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <Label alignment="TOP_RIGHT" prefWidth="40.0" text="9." GridPane.rowIndex="8">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <Label alignment="TOP_RIGHT" prefWidth="40.0" text="10." GridPane.rowIndex="9">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <Label fx:id="label1HS" prefHeight="30.0" prefWidth="240.0" GridPane.columnIndex="2">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Label>
+      <Label fx:id="label2HS" prefHeight="30.0" prefWidth="240.0" GridPane.columnIndex="2" GridPane.rowIndex="1">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Label>
+      <Label fx:id="label3HS" prefHeight="30.0" prefWidth="240.0" GridPane.columnIndex="2" GridPane.rowIndex="2">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Label>
+      <Label fx:id="label4HS" prefHeight="30.0" prefWidth="240.0" GridPane.columnIndex="2" GridPane.rowIndex="3">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Label>
+      <Label fx:id="label5HS" prefHeight="30.0" prefWidth="240.0" GridPane.columnIndex="2" GridPane.rowIndex="4">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Label>
+      <Label fx:id="label6HS" prefHeight="30.0" prefWidth="240.0" GridPane.columnIndex="2" GridPane.rowIndex="5">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Label>
+      <Label fx:id="label7HS" prefHeight="30.0" prefWidth="240.0" GridPane.columnIndex="2" GridPane.rowIndex="6">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Label>
+      <Label fx:id="label8HS" prefHeight="30.0" prefWidth="240.0" GridPane.columnIndex="2" GridPane.rowIndex="7">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Label>
+      <Label fx:id="label9HS" prefHeight="30.0" prefWidth="240.0" GridPane.columnIndex="2" GridPane.rowIndex="8">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Label>
+      <Label fx:id="label10HS" prefHeight="30.0" prefWidth="240.0" GridPane.columnIndex="2" GridPane.rowIndex="9">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Label>
+   </GridPane>
+</AnchorPane>
