@@ -1,6 +1,7 @@
 package client;
 
 import data.Data;
+import data.Tasks;
 
 import java.io.*;
 import java.net.InetAddress;
@@ -57,9 +58,13 @@ public class ClientConnection implements Runnable {
              ObjectInputStream in = new ObjectInputStream(socket.getInputStream())) {
             out = new ObjectOutputStream(socket.getOutputStream());
 
-            while (true) {
+            boolean stayConnected = true;
+            while (stayConnected) {
                 Data inData = (Data) in.readObject();
                 System.out.println("Client " + dataHandler.player + " received " + inData.task + " from server");
+                if (inData.task == Tasks.SET_SCORE && inData.lastRound) {
+                    stayConnected = false;
+                }
                 dataHandler.readData(inData);
             }
         } catch (IOException | ClassNotFoundException e) {

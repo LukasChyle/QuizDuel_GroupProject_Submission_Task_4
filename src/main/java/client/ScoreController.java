@@ -21,11 +21,12 @@ import javafx.stage.StageStyle;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
 public class ScoreController implements Runnable {
 
+    @FXML
+    private Button ngButton;
     @FXML
     private Circle thisPortraitCircle, opponentPortraitCircle;
     @FXML
@@ -91,6 +92,7 @@ public class ScoreController implements Runnable {
             closeButton.setText("Exit");
             progressBar.setVisible(false);
             finnishLabel.setVisible(true);
+            ngButton.setVisible(true);
             scoreboardButton.setVisible(true);
             FXMLLoader loader = new FXMLLoader(getClass().getResource("highScoreScene.fxml"));
             Parent root = loader.load();
@@ -206,5 +208,15 @@ public class ScoreController implements Runnable {
         stage.show();
     }
 
+    public void onNewGameClick() {
+        Data data = new Data();
+        data.message = "Waiting for a opponent";
+        try {
+            connection.getDataHandler().setWait(data);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        new Thread(connection).start();
+    }
 }
 

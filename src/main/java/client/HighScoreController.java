@@ -2,20 +2,12 @@ package client;
 
 import javafx.application.Platform;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.stage.Modality;
 import javafx.stage.Stage;
-import javafx.stage.StageStyle;
-
 import java.io.File;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 public class HighScoreController {
     @FXML

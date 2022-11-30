@@ -39,11 +39,11 @@ public class ProfileController {
         setNickname();
         if (nickname != null) {
             ClientConnection connection = new ClientConnection(nickname, avatar);
-            new Thread(connection).start();
             connection.getDataHandler().currentNode = nickTextField;
             Data data = new Data();
             data.message = "Waiting for a opponent";
             connection.getDataHandler().setWait(data);
+            new Thread(connection).start();
         }
     }
 
