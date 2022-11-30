@@ -43,7 +43,6 @@ public class HighScoreController {
                 for (int j = 1; j < currentScore.length; j++) {
                     currentScoreInfo.append(currentScore[j]).append(" ");
                 }
-                System.out.println(i);
                 highScoreInfo[i].setText(currentScoreInfo.toString());
             }
         });
