@@ -47,6 +47,7 @@ public class ClientConnection implements Runnable {
     @Override
     public void run() {
         int port = 5000;
+        boolean stayConnected = true;
 
         try {
             host = InetAddress.getByName(p.getProperty("adress","127.0.0.1"));
@@ -58,7 +59,6 @@ public class ClientConnection implements Runnable {
              ObjectInputStream in = new ObjectInputStream(socket.getInputStream())) {
             out = new ObjectOutputStream(socket.getOutputStream());
 
-            boolean stayConnected = true;
             while (stayConnected) {
                 Data inData = (Data) in.readObject();
                 System.out.println("Client " + dataHandler.player + " received " + inData.task + " from server");
