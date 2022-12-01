@@ -72,10 +72,8 @@ public class GetHighScore {
                 isValidHighScore = true;
             } else {
                 isValidHighScore = false;
-
             }
             if (isValidHighScore) {
-
                 highScoreList.remove(getLowestIndex);
                 String[] s = {Integer.toString(playerAvatar), playerNickname,
                         correctAnswer + "/" + numberOfQuestions, percentageCorrect + "%"};
