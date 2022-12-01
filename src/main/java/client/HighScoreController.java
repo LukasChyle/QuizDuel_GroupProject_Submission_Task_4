@@ -40,8 +40,14 @@ public class HighScoreController {
                 Image image = new Image(file.toURI().toString());
                 highScoreAvatars[i].setImage(image);
                 StringBuilder currentScoreInfo = new StringBuilder();
+                currentScoreInfo.append("  ");
                 for (int j = 1; j < currentScore.length; j++) {
-                    currentScoreInfo.append(currentScore[j]).append(" ");
+                    if (j < currentScore.length - 1) {
+                        currentScoreInfo.append(currentScore[j]).append("  ,  ");
+                    }
+                    else {
+                        currentScoreInfo.append(currentScore[j]);
+                    }
                 }
                 highScoreInfo[i].setText(currentScoreInfo.toString());
             }

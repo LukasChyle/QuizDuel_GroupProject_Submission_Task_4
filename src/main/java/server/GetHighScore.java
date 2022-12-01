@@ -1,10 +1,7 @@
 package server;
 
-
 import java.io.*;
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
 import java.util.List;
 
 public class GetHighScore {
@@ -20,7 +17,6 @@ public class GetHighScore {
         int counter = 0;
         int correctAnswer = 0;
         int wrongAnswer = 0;
-
         int numberOfQuestions = 0;
 
         for (Boolean[] aBoolean : playerScore) {
@@ -33,17 +29,20 @@ public class GetHighScore {
                 numberOfQuestions = correctAnswer + wrongAnswer;
             }
         }
+        double correctAnswerTemp = correctAnswer;
+        double numberOfQuestionsTemp = numberOfQuestions;
+        int percentageCorrect = (int) Math.round(((correctAnswerTemp / numberOfQuestionsTemp) * 100));
 
         if (highScoreList.size() < 10) {
             int count = 0;
-            String[] s = {Integer.toString(playerAvatar), playerNickname, Integer.toString(correctAnswer)};
+            String[] s = {Integer.toString(playerAvatar), playerNickname,
+                    correctAnswer + "/" + numberOfQuestions, percentageCorrect + "%"};
             if (highScoreList.size() == 0) {
                 highScoreList.add(0, s);
             } else {
                 int lengthOfList = highScoreList.size();
                 for (String[] strings : highScoreList) {
-
-                    if (correctAnswer >= Integer.parseInt(strings[2])) {
+                    if (percentageCorrect >= Integer.parseInt(strings[3].substring(0, strings[3].length() - 1))) {
                         highScoreList.add(count, s);
                         break;
                     }
@@ -52,14 +51,13 @@ public class GetHighScore {
                 if (highScoreList.size() == lengthOfList) {
                     highScoreList.add(count, s);
                 }
-
             }
         } else {
 
             int[] arrayToCompare = new int[highScoreList.size()];
 
             for (String[] strings : highScoreList) {
-                arrayToCompare[counter] = Integer.parseInt(strings[2]);
+                arrayToCompare[counter] = Integer.parseInt(strings[3].substring(0, strings[3].length() - 1));
                 counter++;
             }
 
@@ -68,7 +66,6 @@ public class GetHighScore {
                     lowestScore = arrayToCompare[i];
                     getLowestIndex = i;
                 }
-
             }
             boolean isValidHighScore;
             if (correctAnswer >= lowestScore) {
@@ -80,11 +77,12 @@ public class GetHighScore {
             if (isValidHighScore) {
 
                 highScoreList.remove(getLowestIndex);
-                String[] s = {Integer.toString(playerAvatar), playerNickname, Integer.toString(correctAnswer)};
+                String[] s = {Integer.toString(playerAvatar), playerNickname,
+                        correctAnswer + "/" + numberOfQuestions, percentageCorrect + "%"};
                 int count = 0;
                 while (!isSorted) {
                     for (String[] strings : highScoreList) {
-                        if (correctAnswer >= Integer.parseInt(strings[2])) {
+                        if (percentageCorrect >= Integer.parseInt(strings[3].substring(0, strings[3].length() - 1))) {
                             highScoreList.add(count, s);
                             break;
                         }
@@ -97,7 +95,6 @@ public class GetHighScore {
                 }
             }
         }
-
         saveHighScoreList(); // saves the high score to file, replaces existing one.
         return highScoreList;
     }
@@ -128,21 +125,4 @@ public class GetHighScore {
             highScoreList = new ArrayList<>();
         }
     }
-
-
-   /* public static void main(String[] args) {
-
-        Boolean[] b = {false,false,false};
-        Boolean[] b1 = {true,true,true};
-        Boolean[] b2 = {true,false,false};
-
-        List<Boolean[]> bool = new ArrayList<>();
-        bool.add(b);
-        bool.add(b1);
-        bool.add(b2);
-
-        GetHighScore g = new GetHighScore();
-        g.getHighScore(bool, "dennis",1);
-
-    }*/
 }
