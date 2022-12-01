@@ -51,6 +51,7 @@ public class GetHighScore {
                 if (highScoreList.size() == lengthOfList) {
                     highScoreList.add(count, s);
                 }
+
             }
         } else {
 
@@ -68,7 +69,7 @@ public class GetHighScore {
                 }
             }
             boolean isValidHighScore;
-            if (correctAnswer >= lowestScore) {
+            if (percentageCorrect >= lowestScore) {
                 isValidHighScore = true;
             } else {
                 isValidHighScore = false;
