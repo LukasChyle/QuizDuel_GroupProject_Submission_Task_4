@@ -105,52 +105,52 @@
             <Font name="System Bold" size="18.0" />
          </font>
       </Label>
-      <Label fx:id="label1HS" prefHeight="30.0" prefWidth="240.0" GridPane.columnIndex="2">
+      <Label fx:id="label1HS" prefHeight="30.0" prefWidth="230.0" GridPane.columnIndex="2">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>
       </Label>
-      <Label fx:id="label2HS" prefHeight="30.0" prefWidth="240.0" GridPane.columnIndex="2" GridPane.rowIndex="1">
+      <Label fx:id="label2HS" prefHeight="30.0" prefWidth="230.0" GridPane.columnIndex="2" GridPane.rowIndex="1">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>
       </Label>
-      <Label fx:id="label3HS" prefHeight="30.0" prefWidth="240.0" GridPane.columnIndex="2" GridPane.rowIndex="2">
+      <Label fx:id="label3HS" prefHeight="30.0" prefWidth="230.0" GridPane.columnIndex="2" GridPane.rowIndex="2">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>
       </Label>
-      <Label fx:id="label4HS" prefHeight="30.0" prefWidth="240.0" GridPane.columnIndex="2" GridPane.rowIndex="3">
+      <Label fx:id="label4HS" prefHeight="30.0" prefWidth="230.0" GridPane.columnIndex="2" GridPane.rowIndex="3">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>
       </Label>
-      <Label fx:id="label5HS" prefHeight="30.0" prefWidth="240.0" GridPane.columnIndex="2" GridPane.rowIndex="4">
+      <Label fx:id="label5HS" prefHeight="30.0" prefWidth="230.0" GridPane.columnIndex="2" GridPane.rowIndex="4">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>
       </Label>
-      <Label fx:id="label6HS" prefHeight="30.0" prefWidth="240.0" GridPane.columnIndex="2" GridPane.rowIndex="5">
+      <Label fx:id="label6HS" prefHeight="30.0" prefWidth="230.0" GridPane.columnIndex="2" GridPane.rowIndex="5">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>
       </Label>
-      <Label fx:id="label7HS" prefHeight="30.0" prefWidth="240.0" GridPane.columnIndex="2" GridPane.rowIndex="6">
+      <Label fx:id="label7HS" prefHeight="30.0" prefWidth="230.0" GridPane.columnIndex="2" GridPane.rowIndex="6">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>
       </Label>
-      <Label fx:id="label8HS" prefHeight="30.0" prefWidth="240.0" GridPane.columnIndex="2" GridPane.rowIndex="7">
+      <Label fx:id="label8HS" prefHeight="30.0" prefWidth="230.0" GridPane.columnIndex="2" GridPane.rowIndex="7">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>
       </Label>
-      <Label fx:id="label9HS" prefHeight="30.0" prefWidth="240.0" GridPane.columnIndex="2" GridPane.rowIndex="8">
+      <Label fx:id="label9HS" prefHeight="30.0" prefWidth="230.0" GridPane.columnIndex="2" GridPane.rowIndex="8">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>
       </Label>
-      <Label fx:id="label10HS" prefHeight="30.0" prefWidth="240.0" GridPane.columnIndex="2" GridPane.rowIndex="9">
+      <Label fx:id="label10HS" prefHeight="30.0" prefWidth="230.0" GridPane.columnIndex="2" GridPane.rowIndex="9">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>
